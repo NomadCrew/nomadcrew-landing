@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowRight, Users, MessageSquareShare, Receipt, MapPin } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Users, MessageSquareShare, Receipt, MapPin, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const fadeIn = {
@@ -17,6 +17,38 @@ const stagger = {
 };
 
 export default function LandingPage() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      setStatus('success');
+      setEmail('');
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage(error.message);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar with Slide Down Animation */}
@@ -116,6 +148,7 @@ export default function LandingPage() {
               Get early access and exclusive updates.
             </p>
             <motion.form 
+              onSubmit={handleSubmit}
               className="flex flex-col sm:flex-row gap-4 justify-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -124,18 +157,57 @@ export default function LandingPage() {
             >
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                disabled={status === 'loading' || status === 'success'}
+                className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:bg-gray-100"
               />
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors whitespace-nowrap"
+                disabled={status === 'loading' || status === 'success'}
+                whileHover={status === 'idle' ? { scale: 1.05 } : {}}
+                whileTap={status === 'idle' ? { scale: 0.95 } : {}}
+                className={`px-8 py-3 rounded-lg font-semibold whitespace-nowrap flex items-center justify-center gap-2 ${
+                  status === 'success' 
+                    ? 'bg-green-500 text-white' 
+                    : status === 'error'
+                    ? 'bg-red-500 text-white'
+                    : 'bg-orange-500 text-white hover:bg-orange-600'
+                } transition-colors disabled:opacity-50`}
               >
-                Join Now
+                {status === 'loading' ? (
+                  <>
+                    <Loader2 className="animate-spin" size={16} />
+                    Joining...
+                  </>
+                ) : status === 'success' ? (
+                  'Joined Successfully!'
+                ) : status === 'error' ? (
+                  'Try Again'
+                ) : (
+                  'Join Now'
+                )}
               </motion.button>
             </motion.form>
+            {errorMessage && (
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="mt-4 text-red-500"
+              >
+                {errorMessage}
+              </motion.p>
+            )}
+            {status === 'success' && (
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="mt-4 text-green-600"
+              >
+                Thank you for joining! We'll be in touch soon.
+              </motion.p>
+            )}
           </motion.div>
         </div>
       </div>
