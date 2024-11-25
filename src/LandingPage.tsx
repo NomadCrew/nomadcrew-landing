@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ArrowRight, Users, MessageSquareShare, Receipt, MapPin, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -21,32 +21,40 @@ export default function LandingPage() {
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = async (e) => {
-      e.preventDefault();
-      if (!email) return;
-    
-      setStatus('loading');
-      setErrorMessage('');
-    
-      try {
-        const response = await fetch('/api/waitlist', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
-        });
-    
-        if (!response.ok) {
-          const data = await response.json();
-          throw new Error(data.message || 'Something went wrong');
-        }
-    
-        setStatus('success');
-        setEmail('');
-      } catch (error) {
-        setStatus('error');
-        setErrorMessage(error.message);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!email) {
+      console.error('Email is empty');
+      return;
+    }
+  
+    setStatus('loading');
+    setErrorMessage('');
+  
+    try {
+      console.log('Sending request to /api/waitlist');
+      const response = await fetch(`${window.location.origin}/api/waitlist`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+  
+      console.log('Response status:', response.status);
+      const data = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
       }
-    };
+  
+      setStatus('success');
+      setEmail('');
+    } catch (error: any) {
+      console.error('Error:', error.message);
+      setStatus('error');
+      setErrorMessage(error.message);
+    }
+  };
+  
   
 
   return (
