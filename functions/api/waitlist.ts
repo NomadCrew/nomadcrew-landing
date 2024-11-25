@@ -9,6 +9,8 @@ export async function onRequest(context) {
   const { request } = context;
   const { method } = request;
 
+  console.log(`[Waitlist] Handling ${method} request`);
+
   if (method === 'OPTIONS') {
     return new Response(null, {
       headers: corsHeaders,
@@ -34,9 +36,11 @@ export async function onRequest(context) {
     try {
       body = await request.json();
     } catch (e) {
+      console.error('[Waitlist] JSON parse error:', e);
       return new Response(
         JSON.stringify({
-          error: 'Invalid JSON in request body'
+          error: 'Invalid JSON in request body',
+          details: e.message
         }),
         {
           status: 400,
@@ -59,7 +63,23 @@ export async function onRequest(context) {
       );
     }
 
-    // Resend API call
+    console.log(`[Waitlist] Processing signup for email: ${email}`);
+
+    // Verify Resend API key is present
+    if (!context.env.RESEND_API_KEY) {
+      console.error('[Waitlist] Missing RESEND_API_KEY environment variable');
+      return new Response(
+        JSON.stringify({
+          error: 'Server configuration error',
+          details: 'Email service not properly configured'
+        }),
+        {
+          status: 500,
+          headers: corsHeaders
+        }
+      );
+    }
+
     try {
       const resendResponse = await fetch('https://api.resend.com/emails', {
         method: 'POST',
@@ -77,7 +97,6 @@ export async function onRequest(context) {
               <head>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
               </head>
               <body style="margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif;">
                 <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -110,10 +129,14 @@ export async function onRequest(context) {
         })
       });
 
+      const resendData = await resendResponse.json();
+
       if (!resendResponse.ok) {
-        const errorData = await resendResponse.json();
-        throw new Error(errorData.message || 'Failed to send email');
+        console.error('[Waitlist] Resend API error:', resendData);
+        throw new Error(resendData.message || 'Failed to send email');
       }
+
+      console.log('[Waitlist] Email sent successfully:', resendData.id);
 
       return new Response(
         JSON.stringify({
@@ -126,10 +149,11 @@ export async function onRequest(context) {
         }
       );
     } catch (error) {
-      console.error('Failed to send email:', error);
+      console.error('[Waitlist] Email send error:', error);
       return new Response(
         JSON.stringify({
-          error: 'Failed to send confirmation email: ' + error.message
+          error: 'Failed to send confirmation email',
+          details: error.message
         }),
         {
           status: 500,
@@ -138,7 +162,7 @@ export async function onRequest(context) {
       );
     }
   } catch (error) {
-    console.error('Server error:', error);
+    console.error('[Waitlist] Server error:', error);
     return new Response(
       JSON.stringify({
         error: 'Internal server error',
