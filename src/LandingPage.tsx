@@ -22,32 +22,32 @@ export default function LandingPage() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setStatus('loading');
-    setErrorMessage('');
-
-    try {
-      const response = await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong');
+      e.preventDefault();
+      if (!email) return;
+    
+      setStatus('loading');
+      setErrorMessage('');
+    
+      try {
+        const response = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+    
+        if (!response.ok) {
+          const data = await response.json();
+          throw new Error(data.message || 'Something went wrong');
+        }
+    
+        setStatus('success');
+        setEmail('');
+      } catch (error) {
+        setStatus('error');
+        setErrorMessage(error.message);
       }
-
-      setStatus('success');
-      setEmail('');
-    } catch (error) {
-      setStatus('error');
-      setErrorMessage(error.message);
-    }
-  };
+    };
+  
 
   return (
     <div className="min-h-screen bg-white">
