@@ -1,0 +1,29 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appIDs": [
+                    "27DC66D35A.com.nomadcrew.app",
+                    "27DC66D35A.com.nomadcrew.app.dev"
+                ],
+                "components": [
+                    {
+                        "/": "/invite/accept/*",
+                        "comment": "Trip invitation deep links"
+                    },
+                    {
+                        "/": "/auth/callback",
+                        "comment": "OAuth callback"
+                    }
+                ]
+            }
+        ]
+    },
+    "webcredentials": {
+        "apps": [
+            "27DC66D35A.com.nomadcrew.app",
+            "27DC66D35A.com.nomadcrew.app.dev"
+        ]
+    }
+}
