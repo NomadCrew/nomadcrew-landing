@@ -3,11 +3,11 @@
 ## Current Position
 
 **Phase:** 1 of 8 (Foundation Setup)
-**Plan:** 02 of 5 in phase
+**Plan:** 04 of 5 in phase
 **Status:** In progress
-**Last activity:** 2026-01-29 - Completed 01-02-PLAN.md (Astro installation)
+**Last activity:** 2026-01-29 - Completed 01-04-PLAN.md (Tailwind CSS setup)
 
-**Progress:** [██░░░░░░░░░░░░░░░░░░] 2/5 plans (40%)
+**Progress:** [████░░░░░░░░░░░░░░░░] 4/5 plans (80%)
 
 ## Project Reference
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - Total: 8
 
 **Plans:**
-- Completed: 2
+- Completed: 4
 - In Progress: 0
-- Pending: 3
+- Pending: 1
 - Total (Phase 1): 5
 
 **Requirements Coverage:**
@@ -62,6 +62,9 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | Configured static output mode (not SSR) | 01-02 | Project is content site, SSR not needed for v2.0 |
 | Preserved Vite scripts for coexistence during migration | 01-02 | Safety fallback: dev:vite and build:vite maintain original workflow |
 | Set Astro dev server to port 4321 | 01-02 | Avoids conflict with Vite on 5173 |
+| Used @tailwindcss/vite instead of @astrojs/tailwind | 01-04 | @astrojs/tailwind deprecated for v4, Vite plugin offers better performance |
+| Created separate global.css for Astro | 01-04 | Modern Tailwind v4 uses @import syntax, kept index.css for Vite fallback |
+| Added .astro to Tailwind content paths | 01-04 | Required for Tailwind to scan .astro component files |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -95,6 +98,8 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - ✓ .well-known files moved to public/ directory (01-01 complete)
 - ✓ Astro 5.16.16 installed with React integration (01-02 complete)
 - ✓ Dev servers working: Astro on port 4321, Vite fallback on 5173 (01-02 complete)
+- ✓ Tailwind CSS configured with @tailwindcss/vite plugin (01-04 complete)
+- ✓ Tailwind v4 global.css created with @import syntax (01-04 complete)
 - Using pnpm instead of npm due to MSYS output suppression issues
 - waitlist.ts function uses Cloudflare Workers API (convert to Astro endpoint in Phase 6)
 - Resend integration preserved for email confirmation
@@ -104,28 +109,28 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 ### TODOs
 - [x] Migrate .well-known files to public/ directory (01-01 complete)
 - [x] Install Astro 5.16.16 and core dependencies (01-02 complete)
-- [ ] Create src/ directory structure (01-03 pending)
-- [ ] Add Tailwind plugin to astro.config.mjs (01-04 pending)
+- [x] Create src/ directory structure (01-03 complete)
+- [x] Add Tailwind plugin to astro.config.mjs (01-04 complete)
 - [ ] Configure TypeScript with Astro-specific settings (01-05 pending)
 
 ---
 
 ## Session Continuity
 
-**Last session:** 2026-01-29 10:02 UTC
-**Stopped at:** Completed 01-02-PLAN.md (Astro installation)
+**Last session:** 2026-01-29 10:08 UTC
+**Stopped at:** Completed 01-04-PLAN.md (Tailwind CSS setup)
 **Resume file:** None
 
 **If resuming this project:**
 1. Read `.planning/STATE.md` (this file) for current position
 2. Read `.planning/ROADMAP.md` for phase goals and success criteria
 3. Read `.planning/REQUIREMENTS.md` for full requirement specifications
-4. Check next phase plan: `.planning/phases/01-foundation-setup/01-03-PLAN.md` (next)
-5. Review completed summaries: `.planning/phases/01-foundation-setup/01-01-SUMMARY.md`, `01-02-SUMMARY.md`
+4. Check next phase plan: `.planning/phases/01-foundation-setup/01-05-PLAN.md` (next)
+5. Review completed summaries: `.planning/phases/01-foundation-setup/01-01-SUMMARY.md`, `01-02-SUMMARY.md`, `01-03-SUMMARY.md`, `01-04-SUMMARY.md`
 
 **Current phase context:**
-Phase 1 establishes the foundation for the entire migration. Plan 01 relocated .well-known files to public/. Plan 02 installed Astro 5.16.16 with React integration and verified both dev servers working (Astro on 4321, Vite fallback on 5173). Note: Project switched from npm to pnpm due to npm output suppression in MSYS environment. Next: Create src/ directory structure for Astro pages, then add Tailwind plugin and configure TypeScript.
+Phase 1 establishes the foundation for the entire migration. Plans 01-04 complete: .well-known files relocated to public/, Astro 5.16.16 installed with React integration, dev servers verified (Astro on 4321, Vite fallback on 5173), src/ directory structure created, and Tailwind CSS configured using @tailwindcss/vite plugin with modern v4 @import syntax. Using pnpm package manager. Only Plan 05 remains: Configure TypeScript with Astro-specific settings (tsconfig.json).
 
 ---
 
-*Last updated: 2026-01-29 after completing 01-02-PLAN.md*
+*Last updated: 2026-01-29 after completing 01-04-PLAN.md*
