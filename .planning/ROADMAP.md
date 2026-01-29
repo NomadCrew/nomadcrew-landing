@@ -26,7 +26,16 @@ Migrate NomadCrew landing page from React/Vite SPA to Astro 5.x with selective R
 3. .well-known files are accessible at /.well-known/[filename] in dev and build output
 4. Test page renders with BaseLayout showing meta tags in page source
 
-**Status:** Pending
+**Plans:** 5 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Move .well-known files to public/
+- [ ] 01-02-PLAN.md — Install Astro packages and create config
+- [ ] 01-03-PLAN.md — Configure TypeScript for Astro + React
+- [ ] 01-04-PLAN.md — Set up Tailwind with Vite plugin
+- [ ] 01-05-PLAN.md — Create BaseLayout and test page
+
+**Status:** Planned
 
 ---
 
@@ -203,7 +212,7 @@ Migrate NomadCrew landing page from React/Vite SPA to Astro 5.x with selective R
 
 | Phase | Goal | Requirements | Status |
 |-------|------|--------------|--------|
-| 1 | Foundation Setup | MIGR-01, MIGR-04 | Pending |
+| 1 | Foundation Setup | MIGR-01, MIGR-04 | Planned |
 | 2 | Cloudflare Integration | MIGR-03 | Pending |
 | 3 | Static Pages Migration | SEO-01, SEO-04 | Pending |
 | 4 | React Islands Extraction | MIGR-02, PERF-05, PERF-06 | Pending |
@@ -228,4 +237,4 @@ No orphaned requirements.
 
 ---
 
-*Last updated: 2026-01-29 during roadmap creation*
+*Last updated: 2026-01-29 after Phase 1 planning*
