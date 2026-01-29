@@ -52,16 +52,16 @@ test.describe('React Islands Hydration', () => {
     // Check for main heading
     await expect(page.locator('h1')).toContainText('Group Travel App');
 
-    // Check for CTA button
-    const ctaButton = page.locator('text=Get Early Access');
+    // Check for CTA button (use role to disambiguate from waitlist paragraph)
+    const ctaButton = page.getByRole('link', { name: 'Get Early Access' });
     await expect(ctaButton).toBeVisible();
   });
 
   test('FeatureCards render all 4 features', async ({ page }) => {
     await page.goto('/test-all-islands/');
 
-    // Scroll to features section to trigger client:visible
-    await page.locator('.bg-gray-50').scrollIntoViewIfNeeded();
+    // Scroll to features section to trigger client:visible (use first match - the section, not footer)
+    await page.locator('.bg-gray-50').first().scrollIntoViewIfNeeded();
 
     // Wait for hydration
     await page.waitForTimeout(1000);
@@ -70,11 +70,11 @@ test.describe('React Islands Hydration', () => {
     const featureCards = page.locator('.bg-white.p-6.rounded-xl');
     await expect(featureCards).toHaveCount(4);
 
-    // Check specific feature titles
-    await expect(page.locator('text=Trip Planning & Management')).toBeVisible();
-    await expect(page.locator('text=Real-time Communication')).toBeVisible();
-    await expect(page.locator('text=Location Services')).toBeVisible();
-    await expect(page.locator('text=Financial Management')).toBeVisible();
+    // Check specific feature titles (use role to avoid dev toolbar interference)
+    await expect(page.getByRole('heading', { name: 'Trip Planning & Management' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Real-time Communication' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Location Services' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Financial Management' })).toBeVisible();
   });
 
   test('WaitlistForm is interactive', async ({ page }) => {
