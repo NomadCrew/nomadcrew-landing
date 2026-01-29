@@ -1,3 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Ensure Astro files are scanned for classes */
+@source "../**/*.astro";
+@source "../**/*.tsx";
+@source "../**/*.jsx";
