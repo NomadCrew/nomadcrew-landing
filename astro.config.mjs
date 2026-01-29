@@ -1,6 +1,7 @@
 // astro.config.mjs
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,9 +17,9 @@ export default defineConfig({
     }),
   ],
 
-  // Vite configuration - Tailwind plugin added in Plan 04
+  // Vite configuration with Tailwind
   vite: {
-    plugins: [],
+    plugins: [tailwindcss()],
   },
 
   // Dev server configuration
