@@ -60,7 +60,7 @@ Each task was committed atomically:
 
 1. **Task 1: Move .well-known directory to public/** - `a3d07c2` (chore)
 
-**Plan metadata:** (to be added after STATE.md update)
+**Plan metadata:** `2c912c3` (docs: complete plan)
 
 ## Files Created/Modified
 - `public/.well-known/assetlinks.json` - Android deep linking configuration (delegate_permission/common.handle_all_urls)
