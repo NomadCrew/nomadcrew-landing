@@ -46,14 +46,19 @@ Plans:
 **Dependencies:** Phase 1 (requires Astro project structure)
 
 **Requirements:**
-- MIGR-03: Site deploys to Cloudflare Pages via @astrojs/cloudflare adapter
+- MIGR-03: Site deploys to Cloudflare Pages (static output, no adapter needed)
 
 **Success Criteria:**
-1. Build output includes _routes.json with fewer than 100 rules
-2. wrangler.jsonc contains nodejs_compat flag
+1. Build output valid for Cloudflare Pages (no _routes.json or under 100 rules)
+2. wrangler.jsonc configured with correct output directory
 3. Test deployment to Cloudflare Pages succeeds
 4. .well-known files appear in deployed build
 5. Cloudflare Auto Minify is disabled in dashboard settings
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 02-01-PLAN.md — Configure Wrangler and verify deployment readiness
 
 **Status:** Pending
 
@@ -237,4 +242,4 @@ No orphaned requirements.
 
 ---
 
-*Last updated: 2026-01-29 after Phase 1 planning*
+*Last updated: 2026-01-29 after Phase 2 planning*
