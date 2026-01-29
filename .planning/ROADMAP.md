@@ -107,6 +107,14 @@ Plans:
 4. HeroSection component renders in isolation with client:idle
 5. No hydration mismatch errors in browser console
 
+**Plans:** 4 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Extract Navbar component (client:load)
+- [ ] 04-02-PLAN.md — Extract HeroSection and FeatureCard components
+- [ ] 04-03-PLAN.md — Extract WaitlistForm and create static Footer
+- [ ] 04-04-PLAN.md — Integration testing and hydration verification
+
 **Status:** Pending
 
 ---
@@ -247,4 +255,4 @@ No orphaned requirements.
 
 ---
 
-*Last updated: 2026-01-29 after Phase 3 execution complete*
+*Last updated: 2026-01-29 after Phase 4 planning complete*
