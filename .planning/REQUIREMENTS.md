@@ -11,7 +11,7 @@ Requirements for Astro SEO Migration milestone. Each maps to roadmap phases.
 
 - [x] **MIGR-01**: Site runs on Astro 5.x framework with TypeScript
 - [ ] **MIGR-02**: Interactive components use React islands with selective hydration
-- [ ] **MIGR-03**: Site deploys to Cloudflare Pages via @astrojs/cloudflare adapter
+- [x] **MIGR-03**: Site deploys to Cloudflare Pages (static output, no adapter needed)
 - [x] **MIGR-04**: iOS/Android deep linking preserved (.well-known files work)
 - [ ] **MIGR-05**: Waitlist API endpoint functions correctly (Resend integration)
 - [ ] **MIGR-06**: GitHub Actions CI/CD pipeline automates build and deploy
@@ -96,10 +96,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| MIGR-01 | Phase 1 | Pending |
+| MIGR-01 | Phase 1 | Complete |
 | MIGR-02 | Phase 4 | Pending |
-| MIGR-03 | Phase 2 | Pending |
-| MIGR-04 | Phase 1 | Pending |
+| MIGR-03 | Phase 2 | Complete |
+| MIGR-04 | Phase 1 | Complete |
 | MIGR-05 | Phase 6 | Pending |
 | MIGR-06 | Phase 8 | Pending |
 | MIGR-07 | Phase 8 | Pending |
