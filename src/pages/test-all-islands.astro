@@ -1,0 +1,68 @@
+---
+// src/pages/test-all-islands.astro
+// Integration test page for all React islands
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/react/Navbar.tsx';
+import HeroSection from '../components/react/HeroSection.tsx';
+import FeatureCard from '../components/react/FeatureCard.tsx';
+import WaitlistForm from '../components/react/WaitlistForm.tsx';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="All Islands Integration Test"
+  description="Testing all React islands together for hydration compatibility"
+>
+  <!-- Navbar: client:load (immediate interactivity) -->
+  <Navbar client:load />
+
+  <!-- HeroSection: client:idle (deferred until browser idle) -->
+  <HeroSection client:idle />
+
+  <!-- Features Section: client:visible (hydrate when scrolled into view) -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <FeatureCard
+          client:visible
+          icon="ClipboardList"
+          title="Trip Planning & Management"
+          description="Plan, manage, and collaborate on group trips with destination search and shared tools."
+        />
+        <FeatureCard
+          client:visible
+          icon="MessagesSquare"
+          title="Real-time Communication"
+          description="Stay connected with group chat, real-time messaging, media sharing, and read receipts."
+        />
+        <FeatureCard
+          client:visible
+          icon="LocateFixed"
+          title="Location Services"
+          description="Share live locations, explore interactive maps, and discover nearby places together."
+        />
+        <FeatureCard
+          client:visible
+          icon="Banknote"
+          title="Financial Management"
+          description="Track expenses effortlessly and split costs fairly among your travel group."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Waitlist Section: client:visible -->
+  <section id="waitlist" class="py-16 px-4">
+    <div class="container mx-auto max-w-xl text-center">
+      <h2 class="text-3xl font-bold mb-6">Join the Waitlist</h2>
+      <p class="text-gray-600 mb-8">
+        Be among the first to experience a better way to travel together.
+        Get early access and exclusive updates.
+      </p>
+      <WaitlistForm client:visible />
+    </div>
+  </section>
+
+  <!-- Footer: Static Astro (no hydration) -->
+  <Footer />
+</BaseLayout>
