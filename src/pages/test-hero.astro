@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/react/HeroSection.tsx';
+---
+
+<BaseLayout
+  title="Hero Test"
+  description="Testing HeroSection component in isolation"
+>
+  <HeroSection client:idle />
+
+  <!-- Anchor target for CTA button verification -->
+  <section id="waitlist" class="py-16 px-4 text-center bg-gray-50">
+    <p class="text-gray-600">Waitlist anchor target (CTA should scroll here)</p>
+  </section>
+
+  <div class="py-16 px-4 text-center text-gray-500">
+    <p>Scroll up to see the hero fade-in animation.</p>
+    <p>Hover over "Get Early Access" button to see scale effect.</p>
+    <p>Click "Get Early Access" to verify it scrolls to #waitlist.</p>
+  </div>
+</BaseLayout>

@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeatureCard from '../components/react/FeatureCard.tsx';
+---
+
+<BaseLayout
+  title="Features Test"
+  description="Testing FeatureCard component in isolation"
+>
+  <div class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h1 class="text-2xl font-bold text-center mb-8">Feature Cards Test</h1>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <FeatureCard
+          client:visible
+          icon="ClipboardList"
+          title="Trip Planning & Management"
+          description="Plan, manage, and collaborate on group trips with destination search and shared tools."
+        />
+        <FeatureCard
+          client:visible
+          icon="MessagesSquare"
+          title="Real-time Communication"
+          description="Stay connected with group chat, real-time messaging, media sharing, and read receipts."
+        />
+        <FeatureCard
+          client:visible
+          icon="LocateFixed"
+          title="Location Services"
+          description="Share live locations, explore interactive maps, and discover nearby places together."
+        />
+        <FeatureCard
+          client:visible
+          icon="Banknote"
+          title="Financial Management"
+          description="Track expenses effortlessly and split costs fairly among your travel group."
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="py-8 text-center text-gray-500">
+    <p>Scroll down to trigger whileInView animations.</p>
+    <p>Hover over cards to see the lift effect (-5px).</p>
+    <p>Verify all 4 icons render correctly (clipboard, messages, location pin, banknote).</p>
+  </div>
+</BaseLayout>
