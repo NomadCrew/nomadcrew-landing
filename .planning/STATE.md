@@ -3,11 +3,11 @@
 ## Current Position
 
 **Phase:** 4 of 8 (React Islands Extraction)
-**Plan:** 02 of 5 in phase
+**Plan:** 03 of 5 in phase
 **Status:** In progress
-**Last activity:** 2026-01-29 - Completed 04-02-PLAN.md (Hero and Features extraction)
+**Last activity:** 2026-01-29 - Completed 04-03-PLAN.md (WaitlistForm & Footer extraction)
 
-**Progress:** [████████░░░░░░░░░░░░] 9/12 plans (75%)
+**Progress:** [██████████░░░░░░░░░░] 10/12 plans (83%)
 
 ## Project Reference
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - Total: 8
 
 **Plans:**
-- Completed: 9 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 2 plans)
+- Completed: 10 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 3 plans)
 - In Progress: 0
-- Pending: 3 (Phase 4: 3 plans remaining)
+- Pending: 2 (Phase 4: 2 plans remaining)
 - Total (Phases 1-4): 12
 
 **Requirements Coverage:**
@@ -79,6 +79,10 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | Icon mapping pattern for FeatureCard (no function props) | 04-02 | Avoids serialization issues in Astro islands, maps string icon names to LucideIcon components |
 | client:idle for HeroSection (animations not critical) | 04-02 | Hero animations enhance UX but not critical, client:idle improves initial load |
 | client:visible for FeatureCard (below-fold) | 04-02 | Viewport-based hydration for below-fold content, saves initial bundle size |
+| WaitlistForm is self-contained with handlers defined internally | 04-03 | Correct pattern for Astro islands (functions cannot be serialized as props) |
+| Footer converted to static Astro component | 04-03 | Removes unnecessary Framer Motion animation, ships zero JavaScript |
+| Email validation: empty + @ symbol check | 04-03 | User-friendly error messages before API submission |
+| client:visible for WaitlistForm | 04-03 | Below-fold content, defers hydration until scrolled into view |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -107,10 +111,11 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 1. ✓ Phase 1 complete - Foundation established
 2. ✓ Phase 2 complete - Cloudflare integration verified
 3. ✓ Phase 3 complete - Privacy policy migrated with visual regression tests
-4. Phase 4 in progress - React Islands Extraction (2/5 plans complete)
+4. Phase 4 in progress - React Islands Extraction (3/5 plans complete)
    - ✓ 04-01: Navbar extraction complete
    - ✓ 04-02: Hero and Features extraction complete
-   - Next: 04-03 Waitlist form extraction
+   - ✓ 04-03: WaitlistForm and Footer extraction complete
+   - Next: 04-04/04-05 Final component extraction
 
 ### Blockers
 (none)
@@ -174,7 +179,7 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 ## Session Continuity
 
 **Last session:** 2026-01-29 17:45 UTC
-**Stopped at:** Completed 04-02-PLAN.md - Hero and Features extraction
+**Stopped at:** Completed 04-03-PLAN.md - WaitlistForm & Footer extraction
 **Resume file:** None
 
 **If resuming this project:**
@@ -207,12 +212,19 @@ Phase 3 (Static Pages Migration) is complete. 1 plan executed successfully:
 Privacy policy live at /privacy with complete content (9 sections), SEO meta tags validated (SEO-01, SEO-04), Playwright test infrastructure operational (3 passing tests: content, SEO, visual), deployed to https://6c2dd40d.nomadcrew-landing-page.pages.dev/privacy/. Migration pattern established: React className → Astro class, BaseLayout wrapper, dev toolbar handling in tests. Ready for Phase 4: React Islands Extraction.
 
 **Phase 4 progress:**
-Phase 4 (React Islands Extraction) in progress. 2 of 5 plans executed:
+Phase 4 (React Islands Extraction) in progress. 3 of 5 plans executed:
 - 04-01: Navbar component extracted to src/components/react/Navbar.tsx with slide-down animation, fixed positioning, hover/tap interactions
 - 04-02: HeroSection and FeatureCard components extracted with icon mapping pattern, client:idle and client:visible hydration strategies
+- 04-03: WaitlistForm extracted to src/components/react/WaitlistForm.tsx with full state management; Footer.astro created as static component with zero JavaScript
 
-Island extraction pattern established: Extract component preserving animations/styling, create test page with appropriate hydration directive, verify in isolation. Navbar uses client:load (critical navigation), HeroSection uses client:idle (animations not critical), FeatureCard uses client:visible (below-fold). Icon mapping pattern avoids serialization issues when passing icon names as props. Test pages at /test-navbar/, /test-hero/, /test-features/ confirm all animations and interactions work correctly. Ready for 04-03: Waitlist form extraction.
+Island extraction patterns established:
+1. Interactive islands: Extract with full state management, handlers defined internally (not props)
+2. Static components: Convert motion.* to standard HTML tags, ship zero JavaScript
+3. Email validation: empty check + @ symbol check with user-friendly errors
+4. Hydration strategy: client:load (critical), client:idle (non-critical animations), client:visible (below-fold)
+
+Test pages at /test-navbar/, /test-hero/, /test-features/, /test-waitlist/ confirm all components work in isolation. WaitlistForm demonstrates self-contained state management pattern. Footer demonstrates zero-JavaScript static component. Ready for 04-04/04-05: Final component extraction and page composition.
 
 ---
 
-*Last updated: 2026-01-29 after completing 04-01-PLAN.md*
+*Last updated: 2026-01-29 after completing 04-03-PLAN.md*
