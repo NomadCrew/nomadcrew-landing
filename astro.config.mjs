@@ -1,7 +1,7 @@
 // astro.config.mjs
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwindcss from '@tailwindcss/vite';
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,17 +10,15 @@ export default defineConfig({
   // Static site generation (not SSR)
   output: 'static',
 
-  // React integration for islands
+  // Integrations
   integrations: [
     react({
       include: ['**/react/*', '**/*.tsx'],
     }),
+    tailwind({
+      applyBaseStyles: false, // We import global.css manually
+    }),
   ],
-
-  // Vite configuration with Tailwind
-  vite: {
-    plugins: [tailwindcss()],
-  },
 
   // Dev server configuration
   server: {

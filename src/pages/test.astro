@@ -1,0 +1,47 @@
+---
+// src/pages/test.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// This runs at build time (server-side)
+const buildTime = new Date().toISOString();
+---
+
+<BaseLayout
+  title="Astro Setup Test"
+  description="Verifying Astro 5.x configuration for NomadCrew landing page"
+>
+  <main class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">
+        Astro is Working!
+      </h1>
+
+      <div class="space-y-4 text-gray-700">
+        <p class="text-lg">
+          If you can see this page with Tailwind styles, the foundation setup is complete.
+        </p>
+
+        <div class="bg-green-100 border-l-4 border-green-500 p-4">
+          <p class="font-semibold">✓ Astro 5.x initialized</p>
+          <p class="font-semibold">✓ TypeScript configured</p>
+          <p class="font-semibold">✓ Tailwind CSS working</p>
+          <p class="font-semibold">✓ BaseLayout rendering</p>
+        </div>
+
+        <p class="text-sm text-gray-500">
+          Build time: {buildTime}
+        </p>
+      </div>
+
+      <div class="mt-8 p-4 bg-gray-100 rounded">
+        <h2 class="text-xl font-semibold mb-2">Verification Checklist:</h2>
+        <ol class="list-decimal list-inside space-y-1 text-gray-600">
+          <li>This page renders at localhost:4321/test</li>
+          <li>Tailwind gradient and typography styles visible</li>
+          <li>View page source shows meta tags from BaseLayout</li>
+          <li>pnpm run check passes without errors</li>
+        </ol>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
