@@ -29,13 +29,13 @@ Migrate NomadCrew landing page from React/Vite SPA to Astro 5.x with selective R
 **Plans:** 5 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Move .well-known files to public/
-- [ ] 01-02-PLAN.md — Install Astro packages and create config
-- [ ] 01-03-PLAN.md — Configure TypeScript for Astro + React
-- [ ] 01-04-PLAN.md — Set up Tailwind with Vite plugin
-- [ ] 01-05-PLAN.md — Create BaseLayout and test page
+- [x] 01-01-PLAN.md — Move .well-known files to public/
+- [x] 01-02-PLAN.md — Install Astro packages and create config
+- [x] 01-03-PLAN.md — Configure TypeScript for Astro + React
+- [x] 01-04-PLAN.md — Set up Tailwind with Vite plugin
+- [x] 01-05-PLAN.md — Create BaseLayout and test page
 
-**Status:** Planned
+**Status:** Complete
 
 ---
 
@@ -212,7 +212,7 @@ Plans:
 
 | Phase | Goal | Requirements | Status |
 |-------|------|--------------|--------|
-| 1 | Foundation Setup | MIGR-01, MIGR-04 | Planned |
+| 1 | Foundation Setup | MIGR-01, MIGR-04 | Complete |
 | 2 | Cloudflare Integration | MIGR-03 | Pending |
 | 3 | Static Pages Migration | SEO-01, SEO-04 | Pending |
 | 4 | React Islands Extraction | MIGR-02, PERF-05, PERF-06 | Pending |
@@ -221,7 +221,7 @@ Plans:
 | 7 | Blog System & SEO Enhancement | BLOG-01 to BLOG-09, SEO-05, SEO-06, SEO-09, SEO-10 | Pending |
 | 8 | Performance Optimization & CI/CD | MIGR-06, MIGR-07, PERF-01 to PERF-04, PERF-07, PERF-08 | Pending |
 
-**Overall:** 0/8 phases complete (0%)
+**Overall:** 1/8 phases complete (12.5%)
 
 ---
 

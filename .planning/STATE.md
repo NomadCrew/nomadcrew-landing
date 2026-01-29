@@ -34,7 +34,7 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 **Requirements Coverage:**
 - v2.0 requirements: 34 total
 - Mapped to phases: 34 (100%)
-- Completed: 0
+- Completed: 2 (MIGR-01, MIGR-04)
 
 **Current Phase (Phase 1):**
 - Goal: Astro development environment established with correct architecture patterns
@@ -65,8 +65,7 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | Used @tailwindcss/vite instead of @astrojs/tailwind | 01-04 | @astrojs/tailwind deprecated for v4, Vite plugin offers better performance |
 | Created separate global.css for Astro | 01-04 | Modern Tailwind v4 uses @import syntax, kept index.css for Vite fallback |
 | Added .astro to Tailwind content paths | 01-04 | Required for Tailwind to scan .astro component files |
-| Use @astrojs/tailwind integration instead of @tailwindcss/vite | 01-05 | Better Astro compatibility, @tailwindcss/vite caused runtime errors |
-| Tailwind v3 syntax (@tailwind directives) instead of v4 (@import) | 01-05 | Match installed Tailwind version, v4 syntax incompatible |
+| **Tailwind v4 with @tailwindcss/vite (final)** | 01-fix | Upgraded Vite to v6, proper Tailwind v4 with @import syntax working |
 | applyBaseStyles: false in Tailwind config | 01-05 | Manual global.css import for full control over style loading order |
 
 ### Research Findings
