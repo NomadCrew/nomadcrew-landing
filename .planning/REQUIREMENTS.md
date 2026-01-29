@@ -96,46 +96,56 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| MIGR-01 | TBD | Pending |
-| MIGR-02 | TBD | Pending |
-| MIGR-03 | TBD | Pending |
-| MIGR-04 | TBD | Pending |
-| MIGR-05 | TBD | Pending |
-| MIGR-06 | TBD | Pending |
-| MIGR-07 | TBD | Pending |
-| SEO-01 | TBD | Pending |
-| SEO-02 | TBD | Pending |
-| SEO-03 | TBD | Pending |
-| SEO-04 | TBD | Pending |
-| SEO-05 | TBD | Pending |
-| SEO-06 | TBD | Pending |
-| SEO-07 | TBD | Pending |
-| SEO-08 | TBD | Pending |
-| SEO-09 | TBD | Pending |
-| SEO-10 | TBD | Pending |
-| BLOG-01 | TBD | Pending |
-| BLOG-02 | TBD | Pending |
-| BLOG-03 | TBD | Pending |
-| BLOG-04 | TBD | Pending |
-| BLOG-05 | TBD | Pending |
-| BLOG-06 | TBD | Pending |
-| BLOG-07 | TBD | Pending |
-| BLOG-08 | TBD | Pending |
-| BLOG-09 | TBD | Pending |
-| PERF-01 | TBD | Pending |
-| PERF-02 | TBD | Pending |
-| PERF-03 | TBD | Pending |
-| PERF-04 | TBD | Pending |
-| PERF-05 | TBD | Pending |
-| PERF-06 | TBD | Pending |
-| PERF-07 | TBD | Pending |
-| PERF-08 | TBD | Pending |
+| MIGR-01 | Phase 1 | Pending |
+| MIGR-02 | Phase 4 | Pending |
+| MIGR-03 | Phase 2 | Pending |
+| MIGR-04 | Phase 1 | Pending |
+| MIGR-05 | Phase 6 | Pending |
+| MIGR-06 | Phase 8 | Pending |
+| MIGR-07 | Phase 8 | Pending |
+| SEO-01 | Phase 3 | Pending |
+| SEO-02 | Phase 5 | Pending |
+| SEO-03 | Phase 5 | Pending |
+| SEO-04 | Phase 3 | Pending |
+| SEO-05 | Phase 7 | Pending |
+| SEO-06 | Phase 7 | Pending |
+| SEO-07 | Phase 5 | Pending |
+| SEO-08 | Phase 5 | Pending |
+| SEO-09 | Phase 7 | Pending |
+| SEO-10 | Phase 7 | Pending |
+| BLOG-01 | Phase 7 | Pending |
+| BLOG-02 | Phase 7 | Pending |
+| BLOG-03 | Phase 7 | Pending |
+| BLOG-04 | Phase 7 | Pending |
+| BLOG-05 | Phase 7 | Pending |
+| BLOG-06 | Phase 7 | Pending |
+| BLOG-07 | Phase 7 | Pending |
+| BLOG-08 | Phase 7 | Pending |
+| BLOG-09 | Phase 7 | Pending |
+| PERF-01 | Phase 8 | Pending |
+| PERF-02 | Phase 8 | Pending |
+| PERF-03 | Phase 8 | Pending |
+| PERF-04 | Phase 8 | Pending |
+| PERF-05 | Phase 4 | Pending |
+| PERF-06 | Phase 4 | Pending |
+| PERF-07 | Phase 8 | Pending |
+| PERF-08 | Phase 8 | Pending |
 
 **Coverage:**
 - v2.0 requirements: 34 total
-- Mapped to phases: 0
-- Unmapped: 34 (pending roadmap creation)
+- Mapped to phases: 34 (100%)
+- Unmapped: 0
+
+**Phase Distribution:**
+- Phase 1: 2 requirements (Foundation Setup)
+- Phase 2: 1 requirement (Cloudflare Integration)
+- Phase 3: 2 requirements (Static Pages Migration)
+- Phase 4: 3 requirements (React Islands Extraction)
+- Phase 5: 4 requirements (Landing Page Assembly)
+- Phase 6: 1 requirement (API Endpoint Migration)
+- Phase 7: 13 requirements (Blog System & SEO Enhancement)
+- Phase 8: 8 requirements (Performance Optimization & CI/CD)
 
 ---
 *Requirements defined: 2026-01-28*
-*Last updated: 2026-01-28 after initial definition*
+*Last updated: 2026-01-29 after roadmap creation*
