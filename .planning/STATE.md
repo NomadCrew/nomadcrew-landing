@@ -2,12 +2,12 @@
 
 ## Current Position
 
-**Phase:** 2 of 8 (Cloudflare Integration)
+**Phase:** 3 of 8 (Static Pages Migration)
 **Plan:** 01 of 1 in phase
 **Status:** Phase complete
-**Last activity:** 2026-01-29 - Completed 02-01-PLAN.md (Wrangler configuration and deployment verification)
+**Last activity:** 2026-01-29 - Completed 03-01-PLAN.md (Privacy Policy page migration with Playwright tests)
 
-**Progress:** [██████░░░░░░░░░░░░░░] 6/6 plans (100%)
+**Progress:** [███████░░░░░░░░░░░░░] 7/7 plans (100%)
 
 ## Project Reference
 
@@ -20,27 +20,27 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 ## Performance Metrics
 
 **Phases:**
-- Completed: 2 (Phase 1: Foundation Setup, Phase 2: Cloudflare Integration)
+- Completed: 3 (Phase 1: Foundation Setup, Phase 2: Cloudflare Integration, Phase 3: Static Pages Migration)
 - In Progress: 0
-- Pending: 6
+- Pending: 5
 - Total: 8
 
 **Plans:**
-- Completed: 6 (Phase 1: 5 plans, Phase 2: 1 plan)
+- Completed: 7 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan)
 - In Progress: 0
 - Pending: 0
-- Total (Phases 1-2): 6
+- Total (Phases 1-3): 7
 
 **Requirements Coverage:**
 - v2.0 requirements: 34 total
 - Mapped to phases: 34 (100%)
-- Completed: 3 (MIGR-01, MIGR-03, MIGR-04)
+- Completed: 5 (MIGR-01, MIGR-03, MIGR-04, SEO-01, SEO-04)
 
-**Current Phase (Phase 2):**
-- Goal: Production deployment configuration validated and ready for Astro
-- Requirements: MIGR-03
-- Success Criteria: 5 defined
-- Dependencies: Phase 1 (Astro project structure)
+**Current Phase (Phase 3):**
+- Goal: First content page migrated successfully to validate deployment pipeline
+- Requirements: SEO-01, SEO-04
+- Success Criteria: 4 defined
+- Dependencies: Phase 2 (working Cloudflare deployment)
 
 ## Accumulated Context
 
@@ -69,6 +69,9 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | applyBaseStyles: false in Tailwind config | 01-05 | Manual global.css import for full control over style loading order |
 | Use wrangler.jsonc instead of wrangler.toml | 02-01 | Modern configuration format with JSON schema validation |
 | Static sites don't need nodejs_compat flag | 02-01 | Will be added in Phase 6 if API endpoints require Node.js compatibility |
+| Use h2:has-text() selectors in Playwright tests | 03-01 | Avoids Astro dev toolbar h1/h2 conflicts in strict mode |
+| Hide astro-dev-toolbar in visual regression tests | 03-01 | Ensures consistent screenshots without toolbar overlay |
+| Create complete privacy policy (not placeholders) | 03-01 | Production-ready content with all 9 sections for user-facing page |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -94,8 +97,8 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 ### Next Steps
 1. ✓ Phase 1 complete - Foundation established
 2. ✓ Phase 2 complete - Cloudflare integration verified
-3. Plan Phase 3: Static Pages Migration
-4. Migrate first static page (privacy policy) to validate patterns
+3. ✓ Phase 3 complete - Privacy policy migrated with visual regression tests
+4. Plan Phase 4: React Islands Extraction
 
 ### Blockers
 (none)
@@ -113,6 +116,9 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - ✓ Deployment verified to Cloudflare Pages: https://7e7e694b.nomadcrew-landing-page.pages.dev (02-01 complete)
 - ✓ .well-known files accessible on deployed site (02-01 complete)
 - ✓ Auto Minify deprecated August 2024 - no longer present in dashboard (02-01 confirmed)
+- ✓ Playwright 1.58.0 installed with Chromium browser for visual regression testing (03-01 complete)
+- ✓ Privacy policy page live at /privacy with SEO meta tags (03-01 complete)
+- ✓ Latest deployment: https://6c2dd40d.nomadcrew-landing-page.pages.dev/privacy/ (03-01 complete)
 - Using pnpm instead of npm due to MSYS output suppression issues
 - waitlist.ts function uses Cloudflare Workers API (convert to Astro endpoint in Phase 6)
 - Resend integration preserved for email confirmation
@@ -152,8 +158,8 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 
 ## Session Continuity
 
-**Last session:** 2026-01-29 12:48 UTC
-**Stopped at:** Completed 02-01-PLAN.md - Phase 2 complete
+**Last session:** 2026-01-29 17:41 UTC
+**Stopped at:** Completed 03-01-PLAN.md - Phase 3 complete
 **Resume file:** None
 
 **If resuming this project:**
@@ -161,7 +167,7 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 2. Read `.planning/ROADMAP.md` for phase goals and success criteria
 3. Read `.planning/REQUIREMENTS.md` for full requirement specifications
 4. Review Phase summaries: `.planning/phases/*/XX-YY-SUMMARY.md`
-5. Next: Plan Phase 3 (Static Pages Migration) using `/gsd:plan-phase 3`
+5. Next: Plan Phase 4 (React Islands Extraction) using `/gsd:plan-phase 4`
 
 **Phase 1 completion:**
 Phase 1 (Foundation Setup) is complete. All 5 plans executed successfully:
@@ -179,6 +185,12 @@ Phase 2 (Cloudflare Integration) is complete. 1 plan executed successfully:
 
 Deployment pipeline validated: wrangler.jsonc with static site config, build output includes .well-known files, live preview at https://7e7e694b.nomadcrew-landing-page.pages.dev. Ready for Phase 3: Static Pages Migration.
 
+**Phase 3 completion:**
+Phase 3 (Static Pages Migration) is complete. 1 plan executed successfully:
+- 03-01: Privacy policy page migrated from React to Astro with Playwright visual regression tests
+
+Privacy policy live at /privacy with complete content (9 sections), SEO meta tags validated (SEO-01, SEO-04), Playwright test infrastructure operational (3 passing tests: content, SEO, visual), deployed to https://6c2dd40d.nomadcrew-landing-page.pages.dev/privacy/. Migration pattern established: React className → Astro class, BaseLayout wrapper, dev toolbar handling in tests. Ready for Phase 4: React Islands Extraction.
+
 ---
 
-*Last updated: 2026-01-29 after completing 02-01-PLAN.md*
+*Last updated: 2026-01-29 after completing 03-01-PLAN.md*
