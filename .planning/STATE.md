@@ -3,11 +3,11 @@
 ## Current Position
 
 **Phase:** 4 of 8 (React Islands Extraction)
-**Plan:** 03 of 5 in phase
+**Plan:** 04 of 5 in phase
 **Status:** In progress
-**Last activity:** 2026-01-29 - Completed 04-03-PLAN.md (WaitlistForm & Footer extraction)
+**Last activity:** 2026-01-29 - Completed 04-04-PLAN.md (Integration testing & verification)
 
-**Progress:** [██████████░░░░░░░░░░] 10/12 plans (83%)
+**Progress:** [███████████░░░░░░░░░] 11/12 plans (92%)
 
 ## Project Reference
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - Total: 8
 
 **Plans:**
-- Completed: 10 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 3 plans)
+- Completed: 11 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans)
 - In Progress: 0
-- Pending: 2 (Phase 4: 2 plans remaining)
+- Pending: 1 (Phase 4: 1 plan remaining)
 - Total (Phases 1-4): 12
 
 **Requirements Coverage:**
@@ -83,6 +83,8 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | Footer converted to static Astro component | 04-03 | Removes unnecessary Framer Motion animation, ships zero JavaScript |
 | Email validation: empty + @ symbol check | 04-03 | User-friendly error messages before API submission |
 | client:visible for WaitlistForm | 04-03 | Below-fold content, defers hydration until scrolled into view |
+| Use role-based selectors for Playwright tests | 04-04 | Avoids strict mode violations from duplicate text in dev toolbar and page content |
+| Integration test page combines all islands | 04-04 | Validates all islands work together without hydration conflicts |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -178,8 +180,8 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 
 ## Session Continuity
 
-**Last session:** 2026-01-29 17:45 UTC
-**Stopped at:** Completed 04-03-PLAN.md - WaitlistForm & Footer extraction
+**Last session:** 2026-01-29 17:54 UTC
+**Stopped at:** Completed 04-04-PLAN.md - Integration testing & verification
 **Resume file:** None
 
 **If resuming this project:**
@@ -212,18 +214,20 @@ Phase 3 (Static Pages Migration) is complete. 1 plan executed successfully:
 Privacy policy live at /privacy with complete content (9 sections), SEO meta tags validated (SEO-01, SEO-04), Playwright test infrastructure operational (3 passing tests: content, SEO, visual), deployed to https://6c2dd40d.nomadcrew-landing-page.pages.dev/privacy/. Migration pattern established: React className → Astro class, BaseLayout wrapper, dev toolbar handling in tests. Ready for Phase 4: React Islands Extraction.
 
 **Phase 4 progress:**
-Phase 4 (React Islands Extraction) in progress. 3 of 5 plans executed:
+Phase 4 (React Islands Extraction) in progress. 4 of 5 plans executed:
 - 04-01: Navbar component extracted to src/components/react/Navbar.tsx with slide-down animation, fixed positioning, hover/tap interactions
 - 04-02: HeroSection and FeatureCard components extracted with icon mapping pattern, client:idle and client:visible hydration strategies
 - 04-03: WaitlistForm extracted to src/components/react/WaitlistForm.tsx with full state management; Footer.astro created as static component with zero JavaScript
+- 04-04: Integration test page created at /test-all-islands/ with all islands; 6 Playwright tests passing, zero hydration errors detected
 
 Island extraction patterns established:
 1. Interactive islands: Extract with full state management, handlers defined internally (not props)
 2. Static components: Convert motion.* to standard HTML tags, ship zero JavaScript
 3. Email validation: empty check + @ symbol check with user-friendly errors
 4. Hydration strategy: client:load (critical), client:idle (non-critical animations), client:visible (below-fold)
+5. Integration testing: Role-based selectors avoid strict mode violations, console monitoring detects hydration errors
 
-Test pages at /test-navbar/, /test-hero/, /test-features/, /test-waitlist/ confirm all components work in isolation. WaitlistForm demonstrates self-contained state management pattern. Footer demonstrates zero-JavaScript static component. Ready for 04-04/04-05: Final component extraction and page composition.
+All React islands verified working together without conflicts. Test pages at /test-navbar/, /test-hero/, /test-features/, /test-waitlist/, /test-all-islands/ confirm components work individually and collectively. Ready for 04-05: Final plan (if needed) or Phase 5: Landing Page Assembly.
 
 ---
 
