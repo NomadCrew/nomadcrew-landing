@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WaitlistForm from '../components/react/WaitlistForm.tsx';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Waitlist Test"
+  description="Testing WaitlistForm component in isolation"
+>
+  <!-- Spacer for visual context -->
+  <div class="pt-24 pb-8 px-4 text-center">
+    <h1 class="text-2xl font-bold">Waitlist Form Test</h1>
+    <p class="text-gray-600 mt-2">Test form states: idle, loading, success, error</p>
+  </div>
+
+  <!-- Waitlist section mimicking real usage -->
+  <section id="waitlist" class="py-16 px-4">
+    <div class="container mx-auto max-w-xl text-center">
+      <h2 class="text-3xl font-bold mb-6">Join the Waitlist</h2>
+      <p class="text-gray-600 mb-8">
+        Be among the first to experience a better way to travel together.
+        Get early access and exclusive updates.
+      </p>
+      <WaitlistForm client:visible />
+    </div>
+  </section>
+
+  <!-- Footer to test static component -->
+  <Footer />
+
+  <div class="py-8 text-center text-gray-500 text-sm">
+    <p>Note: Form submits to /api/waitlist which may not exist yet.</p>
+    <p>Test cases:</p>
+    <ul class="mt-2 space-y-1">
+      <li>1. Submit empty form - should show "Please enter your email"</li>
+      <li>2. Submit "invalid" (no @) - should show validation error</li>
+      <li>3. Submit valid email - should show loading then success/error</li>
+    </ul>
+  </div>
+</BaseLayout>
