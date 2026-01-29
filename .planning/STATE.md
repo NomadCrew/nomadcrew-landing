@@ -2,12 +2,12 @@
 
 ## Current Position
 
-**Phase:** 1 of 8 (Foundation Setup)
-**Plan:** 05 of 5 in phase
+**Phase:** 2 of 8 (Cloudflare Integration)
+**Plan:** 01 of 1 in phase
 **Status:** Phase complete
-**Last activity:** 2026-01-29 - Completed 01-05-PLAN.md (BaseLayout and test page)
+**Last activity:** 2026-01-29 - Completed 02-01-PLAN.md (Wrangler configuration and deployment verification)
 
-**Progress:** [█████░░░░░░░░░░░░░░░] 5/5 plans (100%)
+**Progress:** [██████░░░░░░░░░░░░░░] 6/6 plans (100%)
 
 ## Project Reference
 
@@ -20,27 +20,27 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 ## Performance Metrics
 
 **Phases:**
-- Completed: 1 (Phase 1: Foundation Setup)
+- Completed: 2 (Phase 1: Foundation Setup, Phase 2: Cloudflare Integration)
 - In Progress: 0
-- Pending: 7
+- Pending: 6
 - Total: 8
 
 **Plans:**
-- Completed: 5 (Phase 1 complete)
+- Completed: 6 (Phase 1: 5 plans, Phase 2: 1 plan)
 - In Progress: 0
 - Pending: 0
-- Total (Phase 1): 5
+- Total (Phases 1-2): 6
 
 **Requirements Coverage:**
 - v2.0 requirements: 34 total
 - Mapped to phases: 34 (100%)
-- Completed: 2 (MIGR-01, MIGR-04)
+- Completed: 3 (MIGR-01, MIGR-03, MIGR-04)
 
-**Current Phase (Phase 1):**
-- Goal: Astro development environment established with correct architecture patterns
-- Requirements: MIGR-01, MIGR-04
-- Success Criteria: 4 defined
-- Dependencies: None (foundation phase)
+**Current Phase (Phase 2):**
+- Goal: Production deployment configuration validated and ready for Astro
+- Requirements: MIGR-03
+- Success Criteria: 5 defined
+- Dependencies: Phase 1 (Astro project structure)
 
 ## Accumulated Context
 
@@ -67,6 +67,8 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | Added .astro to Tailwind content paths | 01-04 | Required for Tailwind to scan .astro component files |
 | **Tailwind v4 with @tailwindcss/vite (final)** | 01-fix | Upgraded Vite to v6, proper Tailwind v4 with @import syntax working |
 | applyBaseStyles: false in Tailwind config | 01-05 | Manual global.css import for full control over style loading order |
+| Use wrangler.jsonc instead of wrangler.toml | 02-01 | Modern configuration format with JSON schema validation |
+| Static sites don't need nodejs_compat flag | 02-01 | Will be added in Phase 6 if API endpoints require Node.js compatibility |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -91,15 +93,15 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 
 ### Next Steps
 1. ✓ Phase 1 complete - Foundation established
-2. Plan Phase 2: Landing Page Content (CONT-01, CONT-02)
-3. Migrate landing page content to Astro components
-4. Establish content architecture patterns
+2. ✓ Phase 2 complete - Cloudflare integration verified
+3. Plan Phase 3: Static Pages Migration
+4. Migrate first static page (privacy policy) to validate patterns
 
 ### Blockers
 (none)
 
 ### Technical Notes
-- Current Cloudflare wrangler.toml config must be migrated to wrangler.jsonc
+- ✓ Wrangler CLI 4.61.1 installed with wrangler.jsonc configuration (02-01 complete)
 - ✓ .well-known files moved to public/ directory (01-01 complete)
 - ✓ Astro 5.16.16 installed with React integration (01-02 complete)
 - ✓ Dev servers working: Astro on port 4321, Vite fallback on 5173 (01-02 complete)
@@ -108,10 +110,12 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - ✓ Tailwind v3 global.css with @tailwind directives (01-05 corrected)
 - ✓ BaseLayout.astro created with SEO meta tags pattern (01-05 complete)
 - ✓ Test page verified at /test with full stack integration (01-05 complete)
+- ✓ Deployment verified to Cloudflare Pages: https://7e7e694b.nomadcrew-landing-page.pages.dev (02-01 complete)
+- ✓ .well-known files accessible on deployed site (02-01 complete)
+- ✓ Auto Minify deprecated August 2024 - no longer present in dashboard (02-01 confirmed)
 - Using pnpm instead of npm due to MSYS output suppression issues
 - waitlist.ts function uses Cloudflare Workers API (convert to Astro endpoint in Phase 6)
 - Resend integration preserved for email confirmation
-- Auto Minify must be disabled in Cloudflare dashboard (Phase 2)
 - **Action required:** apple-app-site-association contains placeholder YOUR_TEAM_ID (needs Apple Team ID before iOS deep linking testing)
 
 ### Phase 1 Completion Summary
@@ -129,20 +133,35 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 3. ✓ .well-known files accessible
 4. ✓ Test page renders with meta tags in source
 
+### Phase 2 Completion Summary
+- [x] Migrate wrangler config from .toml to .jsonc (02-01 complete)
+- [x] Install Wrangler CLI 4.61.1 (02-01 complete)
+- [x] Verify build output structure (02-01 complete)
+- [x] Test local Wrangler preview (02-01 complete)
+- [x] Deploy to Cloudflare Pages (02-01 complete)
+- [x] Verify .well-known files on deployed site (02-01 complete)
+
+**All Phase 2 success criteria met:**
+1. ✓ Build output valid for Cloudflare Pages (static mode, no _worker.js)
+2. ✓ wrangler.jsonc configured with pages_build_output_dir: "./dist"
+3. ✓ Test deployment succeeded: https://7e7e694b.nomadcrew-landing-page.pages.dev
+4. ✓ .well-known files accessible on deployed build
+5. ✓ Auto Minify confirmed deprecated (not present in dashboard)
+
 ---
 
 ## Session Continuity
 
-**Last session:** 2026-01-29 10:15 UTC
-**Stopped at:** Completed 01-05-PLAN.md - Phase 1 complete
+**Last session:** 2026-01-29 12:48 UTC
+**Stopped at:** Completed 02-01-PLAN.md - Phase 2 complete
 **Resume file:** None
 
 **If resuming this project:**
 1. Read `.planning/STATE.md` (this file) for current position
 2. Read `.planning/ROADMAP.md` for phase goals and success criteria
 3. Read `.planning/REQUIREMENTS.md` for full requirement specifications
-4. Review Phase 1 summaries: `.planning/phases/01-foundation-setup/01-{01-05}-SUMMARY.md`
-5. Next: Plan Phase 2 (Landing Page Content) using `/gsd:plan-phase 2`
+4. Review Phase summaries: `.planning/phases/*/XX-YY-SUMMARY.md`
+5. Next: Plan Phase 3 (Static Pages Migration) using `/gsd:plan-phase 3`
 
 **Phase 1 completion:**
 Phase 1 (Foundation Setup) is complete. All 5 plans executed successfully:
@@ -152,8 +171,14 @@ Phase 1 (Foundation Setup) is complete. All 5 plans executed successfully:
 - 01-04: Tailwind CSS dependencies installed (corrected in 01-05)
 - 01-05: BaseLayout.astro created with SEO meta tags, test page verified
 
-Foundation is solid: Astro dev server working (port 4321), TypeScript check passing, Tailwind v3 integration stable via @astrojs/tailwind, BaseLayout pattern established for SEO. Ready for Phase 2: Landing Page Content migration.
+Foundation is solid: Astro dev server working (port 4321), TypeScript check passing, Tailwind v3 integration stable via @astrojs/tailwind, BaseLayout pattern established for SEO.
+
+**Phase 2 completion:**
+Phase 2 (Cloudflare Integration) is complete. 1 plan executed successfully:
+- 02-01: Wrangler CLI configured, deployment verified at live URL
+
+Deployment pipeline validated: wrangler.jsonc with static site config, build output includes .well-known files, live preview at https://7e7e694b.nomadcrew-landing-page.pages.dev. Ready for Phase 3: Static Pages Migration.
 
 ---
 
-*Last updated: 2026-01-29 after completing 01-05-PLAN.md*
+*Last updated: 2026-01-29 after completing 02-01-PLAN.md*
