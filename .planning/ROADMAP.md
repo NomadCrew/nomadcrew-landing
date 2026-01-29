@@ -80,6 +80,11 @@ Plans:
 3. Canonical URL meta tag present and correct in page source
 4. Page renders identically to React version (visual regression test passes)
 
+**Plans:** 1 plan
+
+Plans:
+- [ ] 03-01-PLAN.md — Migrate Privacy Policy page with SEO and visual regression tests
+
 **Status:** Pending
 
 ---
@@ -242,4 +247,4 @@ No orphaned requirements.
 
 ---
 
-*Last updated: 2026-01-29 after Phase 2 execution complete*
+*Last updated: 2026-01-29 after Phase 3 planning complete*
