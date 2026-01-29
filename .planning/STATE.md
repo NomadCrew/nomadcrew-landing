@@ -2,12 +2,12 @@
 
 ## Current Position
 
-**Phase:** 3 of 8 (Static Pages Migration)
-**Plan:** 01 of 1 in phase
-**Status:** Phase complete
-**Last activity:** 2026-01-29 - Completed 03-01-PLAN.md (Privacy Policy page migration with Playwright tests)
+**Phase:** 4 of 8 (React Islands Extraction)
+**Plan:** 01 of 5 in phase
+**Status:** In progress
+**Last activity:** 2026-01-29 - Completed 04-01-PLAN.md (Navbar extraction)
 
-**Progress:** [███████░░░░░░░░░░░░░] 7/7 plans (100%)
+**Progress:** [████████░░░░░░░░░░░░] 8/12 plans (67%)
 
 ## Project Reference
 
@@ -21,26 +21,26 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 
 **Phases:**
 - Completed: 3 (Phase 1: Foundation Setup, Phase 2: Cloudflare Integration, Phase 3: Static Pages Migration)
-- In Progress: 0
-- Pending: 5
+- In Progress: 1 (Phase 4: React Islands Extraction)
+- Pending: 4
 - Total: 8
 
 **Plans:**
-- Completed: 7 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan)
+- Completed: 8 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 1 plan)
 - In Progress: 0
-- Pending: 0
-- Total (Phases 1-3): 7
+- Pending: 4 (Phase 4: 4 plans remaining)
+- Total (Phases 1-4): 12
 
 **Requirements Coverage:**
 - v2.0 requirements: 34 total
 - Mapped to phases: 34 (100%)
 - Completed: 5 (MIGR-01, MIGR-03, MIGR-04, SEO-01, SEO-04)
 
-**Current Phase (Phase 3):**
-- Goal: First content page migrated successfully to validate deployment pipeline
-- Requirements: SEO-01, SEO-04
-- Success Criteria: 4 defined
-- Dependencies: Phase 2 (working Cloudflare deployment)
+**Current Phase (Phase 4):**
+- Goal: Extract React components from LandingPage.tsx into standalone islands
+- Requirements: MIGR-02 (React islands with selective hydration)
+- Success Criteria: 5 defined
+- Dependencies: Phase 1 (React integration), Phase 3 (migration patterns)
 
 ## Accumulated Context
 
@@ -72,6 +72,10 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | Use h2:has-text() selectors in Playwright tests | 03-01 | Avoids Astro dev toolbar h1/h2 conflicts in strict mode |
 | Hide astro-dev-toolbar in visual regression tests | 03-01 | Ensures consistent screenshots without toolbar overlay |
 | Create complete privacy policy (not placeholders) | 03-01 | Production-ready content with all 9 sections for user-facing page |
+| Use src/components/react/ for all hydrated React islands | 04-01 | Separates islands from static Astro components for clarity |
+| Test pages verify island renders in isolation before integration | 04-01 | Pattern: BaseLayout + client:load + visual verification guidance |
+| Preserve exact animations and styling from source component | 04-01 | Ensures functional parity during island extraction |
+| client:load for Navbar (critical navigation) | 04-01 | Navigation requires immediate interactivity, not idle/visible |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -93,12 +97,16 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - BaseLayout pattern: TypeScript Props interface with title, description, ogImage
 - SEO meta tags standard: title, description, canonical, Open Graph, Twitter Card
 - Layout composition: Layouts import global.css, pages import layouts
+- React island extraction: src/components/react/ for hydrated components, no props for self-contained islands
+- Test page pattern: Verify island hydration in isolation before main layout integration
 
 ### Next Steps
 1. ✓ Phase 1 complete - Foundation established
 2. ✓ Phase 2 complete - Cloudflare integration verified
 3. ✓ Phase 3 complete - Privacy policy migrated with visual regression tests
-4. Plan Phase 4: React Islands Extraction
+4. Phase 4 in progress - React Islands Extraction (1/5 plans complete)
+   - ✓ 04-01: Navbar extraction complete
+   - Next: 04-02 Hero section extraction
 
 ### Blockers
 (none)
@@ -119,6 +127,9 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - ✓ Playwright 1.58.0 installed with Chromium browser for visual regression testing (03-01 complete)
 - ✓ Privacy policy page live at /privacy with SEO meta tags (03-01 complete)
 - ✓ Latest deployment: https://6c2dd40d.nomadcrew-landing-page.pages.dev/privacy/ (03-01 complete)
+- ✓ React islands directory structure created (04-01 complete)
+- ✓ Navbar extracted as standalone React island (04-01 complete)
+- ✓ Test page pattern established for verifying island hydration (04-01 complete)
 - Using pnpm instead of npm due to MSYS output suppression issues
 - waitlist.ts function uses Cloudflare Workers API (convert to Astro endpoint in Phase 6)
 - Resend integration preserved for email confirmation
@@ -158,8 +169,8 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 
 ## Session Continuity
 
-**Last session:** 2026-01-29 17:41 UTC
-**Stopped at:** Completed 03-01-PLAN.md - Phase 3 complete
+**Last session:** 2026-01-29 17:37 UTC
+**Stopped at:** Completed 04-01-PLAN.md - Navbar extraction
 **Resume file:** None
 
 **If resuming this project:**
@@ -191,6 +202,12 @@ Phase 3 (Static Pages Migration) is complete. 1 plan executed successfully:
 
 Privacy policy live at /privacy with complete content (9 sections), SEO meta tags validated (SEO-01, SEO-04), Playwright test infrastructure operational (3 passing tests: content, SEO, visual), deployed to https://6c2dd40d.nomadcrew-landing-page.pages.dev/privacy/. Migration pattern established: React className → Astro class, BaseLayout wrapper, dev toolbar handling in tests. Ready for Phase 4: React Islands Extraction.
 
+**Phase 4 progress:**
+Phase 4 (React Islands Extraction) in progress. 1 of 5 plans executed:
+- 04-01: Navbar component extracted to src/components/react/Navbar.tsx with slide-down animation, fixed positioning, hover/tap interactions
+
+Island extraction pattern established: Extract component preserving animations/styling, create test page with client:load, verify in isolation. Navbar uses client:load for immediate navigation interactivity. Test page at /test-navbar/ confirms slide-down animation and button interactions work correctly. Ready for 04-02: Hero section extraction.
+
 ---
 
-*Last updated: 2026-01-29 after completing 03-01-PLAN.md*
+*Last updated: 2026-01-29 after completing 04-01-PLAN.md*
