@@ -167,6 +167,13 @@ Plans:
 4. Error states handle API failures gracefully with user-friendly messages
 5. CORS headers allow requests from production domain
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 06-01-PLAN.md — Local dev setup and API tests
+- [ ] 06-02-PLAN.md — End-to-end form submission tests
+- [ ] 06-03-PLAN.md — Production deployment verification
+
 **Status:** Pending
 
 ---
@@ -263,4 +270,4 @@ No orphaned requirements.
 
 ---
 
-*Last updated: 2026-01-31 after Phase 5 execution complete*
+*Last updated: 2026-01-31 after Phase 6 planning complete*
