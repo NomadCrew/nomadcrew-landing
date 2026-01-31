@@ -204,11 +204,13 @@ Plans:
 **Plans:** 5 plans
 
 Plans:
-- [ ] 06.1-01-PLAN.md — Install Lenis, create design tokens, source parallax images
-- [ ] 06.1-02-PLAN.md — Build ParallaxHero with smooth scroll and bottom reveal
-- [ ] 06.1-03-PLAN.md — Create BentoFeatures grid component
-- [ ] 06.1-04-PLAN.md — Create SocialProof and ExpandedFooter components
-- [ ] 06.1-05-PLAN.md — Integrate all components into landing page
+- [x] 06.1-01-PLAN.md — Install Lenis, create design tokens, source parallax images
+- [x] 06.1-02-PLAN.md — Build ParallaxHero with smooth scroll and bottom reveal
+- [x] 06.1-03-PLAN.md — Create BentoFeatures grid component
+- [x] 06.1-04-PLAN.md — Create SocialProof and ExpandedFooter components
+- [x] 06.1-05-PLAN.md — Integrate all components into landing page
+
+**Status:** Complete
 
 **Status:** Planned
 
@@ -307,4 +309,4 @@ No orphaned requirements.
 
 ---
 
-*Last updated: 2026-01-31 after Phase 6.1 planning complete*
+*Last updated: 2026-02-01 after Phase 6.1 execution complete*
