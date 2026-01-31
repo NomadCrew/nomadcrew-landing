@@ -2,12 +2,12 @@
 
 ## Current Position
 
-**Phase:** 6 of 8 (API Endpoint Migration)
-**Plan:** 03 of 3 in phase
-**Status:** Complete
-**Last activity:** 2026-01-31 - Completed 06-03-PLAN.md (Production Deployment Verification)
+**Phase:** 6.1 of 9 (Landing Page Redesign)
+**Plan:** 1 of 5 in phase
+**Status:** In progress
+**Last activity:** 2026-01-31 - Completed 06.1-01-PLAN.md (Design Foundation Setup)
 
-**Progress:** [██████████████████░░] 18/18 plans in Phases 1-6 (100%)
+**Progress:** [███████████████████░] 19/23 plans (82.6%), Phase 6.1: 1/5 complete
 
 ## Project Reference
 
@@ -21,26 +21,26 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 
 **Phases:**
 - Completed: 6 (Phase 1: Foundation Setup, Phase 2: Cloudflare Integration, Phase 3: Static Pages Migration, Phase 4: React Islands Extraction, Phase 5: Landing Page Assembly, Phase 6: API Endpoint Migration)
-- In Progress: 0
+- In Progress: 1 (Phase 6.1: Landing Page Redesign)
 - Pending: 2 (Phases 7-8)
-- Total: 8
+- Total: 9
 
 **Plans:**
-- Completed: 18 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans, Phase 5: 4 plans, Phase 6: 3 plans)
+- Completed: 19 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans, Phase 5: 4 plans, Phase 6: 3 plans, Phase 6.1: 1 plan)
 - In Progress: 0
-- Pending: 0 (Phases 1-6 complete)
-- Total (Phases 1-6): 18
+- Pending: 4 (Phase 6.1: 4 remaining)
+- Total (Phases 1-6.1): 23
 
 **Requirements Coverage:**
 - v2.0 requirements: 34 total
 - Mapped to phases: 34 (100%)
 - Completed: 16 (MIGR-01, MIGR-02, MIGR-03, MIGR-04, MIGR-05, SEO-01, SEO-02, SEO-03, SEO-04, SEO-07, SEO-08, PERF-01, PERF-05, PERF-06)
 
-**Current Phase (Phase 6):**
-- Goal: Configure local API testing environment for Cloudflare Pages Functions
-- Requirements: None (infrastructure setup)
-- Success Criteria: 4 defined (local env, tests, wrangler preview, API accessibility)
-- Dependencies: Phase 2 (Cloudflare integration), Phase 4 (WaitlistForm component)
+**Current Phase (Phase 6.1):**
+- Goal: Redesign landing page with warm minimalist aesthetic and parallax hero
+- Requirements: None (visual enhancement, not v2.0 requirement)
+- Success Criteria: Parallax hero, smooth scroll, warm color palette, improved features section
+- Dependencies: Phase 5 (Landing Page Assembly), Phase 6 (API Endpoint Migration)
 
 ## Accumulated Context
 
@@ -102,6 +102,10 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | Use Playwright route interception for API mocking | 06-02 | Astro dev server doesn't serve Pages Functions, route interception allows testing form behavior without wrangler |
 | Improve network error messages to be user-friendly | 06-02 | Changed "Failed to fetch" to "Network error. Please check your connection..." for better UX |
 | Add 429 rate limiting specific handling | 06-02 | Resend API has rate limits, show "Too many requests..." instead of generic error |
+| Lenis 1.3.17 for smooth scroll | 06.1-01 | Lightweight, modern API, good React hooks support for parallax |
+| Major third (1.250) type scale | 06.1-01 | Harmonious progression, widely recommended for web typography |
+| 8px base spacing unit | 06.1-01 | Industry standard, easy mental math for consistent layouts |
+| Generated placeholder hero images | 06.1-01 | Sharp-generated placeholders enable parallax development; real images added later |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -136,7 +140,10 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 5. ✓ Phase 5 complete - Landing Page Assembly (all 4 plans complete)
 6. ✓ Phase 6 complete - API Endpoint Migration (1 plan complete)
    - ✓ 06-01: API Development Environment Setup complete
-7. Next: Plan Phase 7 (Blog & Content) using `/gsd:plan-phase 7`
+7. Next: Plan Phase 6.1 (Landing Page Redesign) using `/gsd:plan-phase 6.1`
+
+### Roadmap Evolution
+- Phase 6.1 inserted after Phase 6: Landing Page Redesign (URGENT) - Current landing page is primitive, needs visual upgrade before blog phase
 
 ### Blockers
 (none)
@@ -287,10 +294,24 @@ All 23 Playwright tests passing. MIGR-05 requirement satisfied.
 
 ---
 
+**Phase 6.1 progress:**
+Phase 6.1 (Landing Page Redesign) in progress. 1 of 5 plans executed:
+- 06.1-01: Design Foundation Setup - Lenis installed, design tokens created, hero placeholders generated
+
+Design foundation established:
+1. Lenis 1.3.17 smooth scroll library installed
+2. Design tokens: warm minimalist palette, major third type scale, 8px spacing
+3. Three parallax hero placeholder images generated (70KB total)
+4. global.css imports design-tokens.css
+
+Ready for 06.1-02: Parallax hero section implementation.
+
+---
+
 ## Session Continuity
 
-**Last session:** 2026-01-31 09:40 UTC
-**Stopped at:** Completed 06-03-PLAN.md - Production Deployment Verification
+**Last session:** 2026-01-31 20:25 UTC
+**Stopped at:** Completed 06.1-01-PLAN.md - Design Foundation Setup
 **Resume file:** None
 
 **If resuming this project:**
@@ -298,8 +319,8 @@ All 23 Playwright tests passing. MIGR-05 requirement satisfied.
 2. Read `.planning/ROADMAP.md` for phase goals and success criteria
 3. Read `.planning/REQUIREMENTS.md` for full requirement specifications
 4. Review Phase summaries: `.planning/phases/*/XX-YY-SUMMARY.md`
-5. Next: Plan Phase 7 (Blog System & SEO Enhancement) using `/gsd:plan-phase 7`
+5. Next: Execute 06.1-02-PLAN.md (Parallax Hero Section) using `/gsd:execute-phase 6.1`
 
 ---
 
-*Last updated: 2026-01-31 after completing 06-03-PLAN.md*
+*Last updated: 2026-01-31 after completing 06.1-01-PLAN.md*
