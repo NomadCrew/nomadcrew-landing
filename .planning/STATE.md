@@ -88,6 +88,10 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | Used sharp library for OG image generation | 05-01 | ImageMagick had environment issues in MSYS/Windows, sharp provides Node.js-native image processing |
 | Bundle visualizer with gzip and brotli sizes | 05-01 | Aligns with <150KB performance target, shows compressed sizes matching Cloudflare delivery |
 | OG image dimensions: 1200x630 pixels | 05-01 | Standard Open Graph image size for social sharing preview |
+| isHomepage prop controls JSON-LD schema injection | 05-02 | Only homepage needs Organization/WebSite schemas, optional prop defaults to false for safety |
+| SearchAction omitted from WebSite schema | 05-02 | No search functionality in Phase 5 (deferred to Phase 7), avoids Google warnings for missing features |
+| Added og:image:width and og:image:height meta tags | 05-02 | Best practice for social previews (1200x630), prevents layout shift in Open Graph cards |
+| Test page pattern for schema verification | 05-02 | test-json-ld.astro enables manual and automated verification before production use |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -237,22 +241,40 @@ Island extraction patterns established:
 All React islands verified working together without conflicts. Test pages at /test-navbar/, /test-hero/, /test-features/, /test-waitlist/, /test-all-islands/ confirm components work individually and collectively. Ready for 04-05: Final plan (if needed) or Phase 5: Landing Page Assembly.
 
 **Phase 5 progress:**
-Phase 5 (Landing Page Assembly) in progress. 1 of 2 plans executed:
+Phase 5 (Landing Page Assembly) in progress. 2 of 4 plans executed:
 - 05-01: OG image created (1200x630 JPEG, 76KB) with orange gradient background; bundle visualizer configured with gzipSize/brotliSize tracking
+- 05-02: JSON-LD Organization and WebSite schemas added to BaseLayout.astro with conditional isHomepage prop; Playwright tests created for schema validation (SEO-07, SEO-08)
 
-Assets ready for landing page assembly:
+SEO infrastructure complete:
 1. OG image: public/og-image.jpg for social sharing preview (SEO-02)
-2. Bundle monitoring: stats.html generated on build, current size ~87KB gzipped (under 150KB target)
-3. Build verification: TypeScript check passing, all islands operational
+2. JSON-LD schemas: Organization and WebSite schemas ready for homepage (SEO-07, SEO-08)
+3. Schema testing: 4 Playwright tests validate JSON-LD rendering and OG dimensions
+4. Conditional injection: isHomepage prop pattern enables page-specific schema control
 
-Current bundle breakdown (from build output):
-- client.nc8uITnr.js: 44.01 KB gzipped
-- createLucideIcon.fhZgklGt.js: 37.70 KB gzipped
-- Other islands: <3 KB each gzipped
-- Total: ~87 KB gzipped (42% of 150KB target)
+Current bundle status:
+- Total: ~87 KB gzipped (42% of 150KB target - PERF-01)
+- Bundle visualizer: stats.html tracking gzip/brotli sizes
+- TypeScript check: passing without errors
 
-Ready for 05-02: Landing page assembly with all islands and SEO meta tags.
+Next steps:
+- 05-03: Assemble homepage (index.astro) with all islands and isHomepage=true
+- 05-04: Final verification and homepage deployment
 
 ---
 
-*Last updated: 2026-01-31 after completing 05-01-PLAN.md*
+## Session Continuity
+
+**Last session:** 2026-01-31 09:01 UTC
+**Stopped at:** Completed 05-02-PLAN.md - JSON-LD Structured Data
+**Resume file:** None
+
+**If resuming this project:**
+1. Read `.planning/STATE.md` (this file) for current position
+2. Read `.planning/ROADMAP.md` for phase goals and success criteria
+3. Read `.planning/REQUIREMENTS.md` for full requirement specifications
+4. Review Phase summaries: `.planning/phases/*/XX-YY-SUMMARY.md`
+5. Next: Execute Plan 05-03 (Homepage Assembly) using `/gsd:execute-plan 03 05-landing-page-assembly`
+
+---
+
+*Last updated: 2026-01-31 after completing 05-02-PLAN.md*
