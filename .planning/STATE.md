@@ -3,11 +3,11 @@
 ## Current Position
 
 **Phase:** 6 of 8 (API Endpoint Migration)
-**Plan:** 01 of 1 in phase
-**Status:** Complete
-**Last activity:** 2026-01-31 - Completed 06-01-PLAN.md (API Development Environment Setup)
+**Plan:** 02 of 3 in phase
+**Status:** In Progress
+**Last activity:** 2026-01-31 - Completed 06-02-PLAN.md (Waitlist Form E2E Testing)
 
-**Progress:** [████████████████░░░░] 16/16 plans in Phases 1-6 (100%)
+**Progress:** [████████████████░░░░] 17/17 plans in Phases 1-6 (100%)
 
 ## Project Reference
 
@@ -26,10 +26,10 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - Total: 8
 
 **Plans:**
-- Completed: 16 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans, Phase 5: 4 plans, Phase 6: 1 plan)
+- Completed: 17 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans, Phase 5: 4 plans, Phase 6: 2 plans)
 - In Progress: 0
-- Pending: 0 (Phases 1-6 complete)
-- Total (Phases 1-6): 16
+- Pending: 1 (06-03)
+- Total (Phase 6): 3
 
 **Requirements Coverage:**
 - v2.0 requirements: 34 total
@@ -99,6 +99,9 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | Skip automated server-side API tests in CI | 06-01 | Astro dev server doesn't serve functions/, wrangler requires build step and background process |
 | Test client-side validation only with automated Playwright | 06-01 | WaitlistForm validation testable against Astro dev server, provides fast CI feedback |
 | Document manual API testing with test:api:manual script | 06-01 | Manual testing acceptable during development, automation can be added later if needed |
+| Use Playwright route interception for API mocking | 06-02 | Astro dev server doesn't serve Pages Functions, route interception allows testing form behavior without wrangler |
+| Improve network error messages to be user-friendly | 06-02 | Changed "Failed to fetch" to "Network error. Please check your connection..." for better UX |
+| Add 429 rate limiting specific handling | 06-02 | Resend API has rate limits, show "Too many requests..." instead of generic error |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -167,11 +170,13 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - ✓ JSON-LD schemas added to BaseLayout with isHomepage prop (05-02 complete)
 - ✓ Landing page assembled at / with all React islands (05-03 complete)
 - Current bundle size: 88KB gzipped (59% of 150KB target, PERF-01 requirement met)
-- All Playwright tests passing: 15 tests (13 previous + 2 API client validation)
+- All Playwright tests passing: 23 tests (13 previous + 2 API client validation + 8 e2e form tests)
 - ✓ .dev.vars created with RESEND_API_KEY placeholder (06-01 complete)
 - ✓ API tests created: 2 client validation automated, 5 server tests documented for manual testing (06-01 complete)
 - ✓ Wrangler pages dev verified serving /api/waitlist endpoint (06-01 complete)
-- **Action required:** Add real RESEND_API_KEY to .dev.vars for full API testing
+- ✓ E2E form tests created: 6 functional + 2 documentation tests covering all success criteria (06-02 complete)
+- ✓ Enhanced error handling with user-friendly messages for rate limiting and network failures (06-02 complete)
+- **Action required:** Add real RESEND_API_KEY to .dev.vars for manual email delivery verification (SC3)
 
 ### Phase 1 Completion Summary
 - [x] Migrate .well-known files to public/ directory (01-01 complete)
@@ -265,24 +270,25 @@ Phase 5 (Landing Page Assembly) is complete. 4 of 4 plans executed successfully:
 
 Landing page complete with all islands, SEO optimization, and performance targets met. Bundle size: 88KB gzipped (59% of 150KB target). All 13 Playwright tests passing.
 
-**Phase 6 completion:**
-Phase 6 (API Endpoint Migration) is complete. 1 plan executed successfully:
+**Phase 6 progress:**
+Phase 6 (API Endpoint Migration) in progress. 2 of 3 plans executed:
 - 06-01: API Development Environment Setup - .dev.vars template, Playwright API tests, wrangler verification
+- 06-02: Waitlist Form E2E Testing - comprehensive test suite, enhanced error handling, CORS documentation
 
 Local API testing environment configured:
 1. .dev.vars created with RESEND_API_KEY placeholder (gitignored for security)
-2. Playwright tests: 2 client validation tests passing, 5 server tests documented for manual testing
-3. Wrangler pages dev verified serving /api/waitlist endpoint with JSON responses
-4. Manual testing procedure documented in test:api:manual script
+2. Playwright tests: 23 tests total (2 client validation + 8 e2e form tests)
+3. Enhanced error handling: rate limiting (429), network errors, non-JSON responses
+4. All Phase 6 success criteria mapped to test coverage or manual procedures
 
-API testing infrastructure ready. Next: Plan Phase 7 (Blog & Content) or Phase 8 (Optimization).
+E2E testing complete with 100% success criteria coverage. Enhanced WaitlistForm with user-friendly error messages. Next: 06-03 (Production Deployment) or complete Phase 6.
 
 ---
 
 ## Session Continuity
 
-**Last session:** 2026-01-31 08:48 UTC
-**Stopped at:** Completed 06-01-PLAN.md - API Development Environment Setup
+**Last session:** 2026-01-31 09:01 UTC
+**Stopped at:** Completed 06-02-PLAN.md - Waitlist Form E2E Testing
 **Resume file:** None
 
 **If resuming this project:**
@@ -290,8 +296,8 @@ API testing infrastructure ready. Next: Plan Phase 7 (Blog & Content) or Phase 8
 2. Read `.planning/ROADMAP.md` for phase goals and success criteria
 3. Read `.planning/REQUIREMENTS.md` for full requirement specifications
 4. Review Phase summaries: `.planning/phases/*/XX-YY-SUMMARY.md`
-5. Next: Plan Phase 7 (Blog & Content) using `/gsd:plan-phase 7`
+5. Next: Execute plan 06-03 (if exists) or plan Phase 7 (Blog & Content) using `/gsd:plan-phase 7`
 
 ---
 
-*Last updated: 2026-01-31 after completing 06-01-PLAN.md*
+*Last updated: 2026-01-31 after completing 06-02-PLAN.md*
