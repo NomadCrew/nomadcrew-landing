@@ -1,0 +1,24 @@
+---
+// src/pages/test-json-ld.astro
+// Temporary page to verify JSON-LD conditional rendering
+// This page will be removed after verification or kept for debugging
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="JSON-LD Test"
+  description="Test page for JSON-LD schema verification"
+  isHomepage={true}
+>
+  <main class="p-8">
+    <h1 class="text-2xl font-bold">JSON-LD Test Page</h1>
+    <p>This page has isHomepage=true to test JSON-LD schema rendering.</p>
+    <p>View page source to verify:</p>
+    <ul class="list-disc ml-6 mt-4">
+      <li>Organization schema with @type: "Organization"</li>
+      <li>WebSite schema with @type: "WebSite"</li>
+      <li>og:image:width = 1200</li>
+      <li>og:image:height = 630</li>
+    </ul>
+  </main>
+</BaseLayout>
