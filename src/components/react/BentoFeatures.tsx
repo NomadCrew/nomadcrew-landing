@@ -49,14 +49,14 @@ const cardVariants = {
 
 export default function BentoFeatures() {
   return (
-    <section className="py-16 px-4 bg-[var(--color-bg-secondary)]">
+    <section className="py-16 px-4" style={{ backgroundColor: '#F5F3EF' }}>
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-[var(--font-size-3xl)] font-bold text-center mb-12 text-[var(--color-text-primary)]">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#2D2520' }}>
           Everything you need for group travel
         </h2>
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[200px] gap-4"
-          style={{ gridAutoFlow: 'dense' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          style={{ gridAutoRows: '200px', gridAutoFlow: 'dense' }}
         >
           {features.map((feature, index) => {
             const Icon = feature.icon;
@@ -67,17 +67,17 @@ export default function BentoFeatures() {
                 key={feature.title}
                 className={`
                   ${sizeClasses[feature.size]}
-                  bg-[var(--color-bg-primary)]
                   rounded-2xl
                   p-6
-                  shadow-[var(--shadow-sm)]
-                  hover:shadow-[var(--shadow-lg)]
+                  shadow-md
+                  hover:shadow-xl
                   transition-shadow
                   duration-300
                   flex
                   flex-col
                   ${isLarge ? 'justify-between' : 'justify-start'}
                 `}
+                style={{ backgroundColor: '#FDFCFA' }}
                 variants={cardVariants}
                 initial="initial"
                 whileInView="animate"
@@ -86,41 +86,44 @@ export default function BentoFeatures() {
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
               >
                 <div>
-                  <div className={`
-                    ${isLarge ? 'w-14 h-14 mb-6' : 'w-10 h-10 mb-4'}
-                    rounded-xl
-                    bg-[var(--color-accent-light)]
-                    bg-opacity-20
-                    flex
-                    items-center
-                    justify-center
-                  `}>
+                  <div
+                    className={`
+                      ${isLarge ? 'w-14 h-14 mb-6' : 'w-10 h-10 mb-4'}
+                      rounded-xl
+                      flex
+                      items-center
+                      justify-center
+                    `}
+                    style={{ backgroundColor: 'rgba(232, 123, 78, 0.15)' }}
+                  >
                     <Icon
-                      className={`
-                        ${isLarge ? 'w-8 h-8' : 'w-6 h-6'}
-                        text-[var(--color-accent-primary)]
-                      `}
+                      className={isLarge ? 'w-8 h-8' : 'w-6 h-6'}
+                      style={{ color: '#E87B4E' }}
                     />
                   </div>
-                  <h3 className={`
-                    ${isLarge ? 'text-[var(--font-size-2xl)]' : 'text-[var(--font-size-lg)]'}
-                    font-semibold
-                    mb-2
-                    text-[var(--color-text-primary)]
-                  `}>
+                  <h3
+                    className={`
+                      ${isLarge ? 'text-2xl' : 'text-lg'}
+                      font-semibold
+                      mb-2
+                    `}
+                    style={{ color: '#2D2520' }}
+                  >
                     {feature.title}
                   </h3>
-                  <p className={`
-                    text-[var(--color-text-secondary)]
-                    ${isLarge ? 'text-[var(--font-size-base)]' : 'text-[var(--font-size-sm)]'}
-                    leading-relaxed
-                  `}>
+                  <p
+                    className={`
+                      ${isLarge ? 'text-base' : 'text-sm'}
+                      leading-relaxed
+                    `}
+                    style={{ color: '#635750' }}
+                  >
                     {feature.description}
                   </p>
                 </div>
 
                 {isLarge && (
-                  <div className="mt-4 flex items-center text-[var(--color-accent-primary)] font-medium">
+                  <div className="mt-4 flex items-center font-medium" style={{ color: '#E87B4E' }}>
                     <span className="text-sm">Explore features</span>
                     <svg
                       className="w-4 h-4 ml-2"
