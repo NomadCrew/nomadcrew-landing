@@ -3,11 +3,11 @@
 ## Current Position
 
 **Phase:** 6.1 of 9 (Landing Page Redesign)
-**Plan:** 1 of 5 in phase
+**Plan:** 2 of 5 in phase
 **Status:** In progress
-**Last activity:** 2026-01-31 - Completed 06.1-01-PLAN.md (Design Foundation Setup)
+**Last activity:** 2026-01-31 - Completed 06.1-02-PLAN.md (Parallax Hero Section)
 
-**Progress:** [███████████████████░] 19/23 plans (82.6%), Phase 6.1: 1/5 complete
+**Progress:** [████████████████████] 20/23 plans (87.0%), Phase 6.1: 2/5 complete
 
 ## Project Reference
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - Total: 9
 
 **Plans:**
-- Completed: 19 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans, Phase 5: 4 plans, Phase 6: 3 plans, Phase 6.1: 1 plan)
+- Completed: 20 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans, Phase 5: 4 plans, Phase 6: 3 plans, Phase 6.1: 2 plans)
 - In Progress: 0
-- Pending: 4 (Phase 6.1: 4 remaining)
+- Pending: 3 (Phase 6.1: 3 remaining)
 - Total (Phases 1-6.1): 23
 
 **Requirements Coverage:**
@@ -106,6 +106,9 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | Major third (1.250) type scale | 06.1-01 | Harmonious progression, widely recommended for web typography |
 | 8px base spacing unit | 06.1-01 | Industry standard, easy mental math for consistent layouts |
 | Generated placeholder hero images | 06.1-01 | Sharp-generated placeholders enable parallax development; real images added later |
+| Lenis wrapper pattern | 06.1-02 | Provider component with useEffect lifecycle for clean separation and proper cleanup |
+| Mobile parallax reduction | 06.1-02 | Reduce parallax intensity by 50% on viewport < 768px for mobile GPU performance |
+| useReducedMotion behavior | 06.1-02 | Completely disable parallax (multiplier=0) for WCAG accessibility compliance |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -295,23 +298,26 @@ All 23 Playwright tests passing. MIGR-05 requirement satisfied.
 ---
 
 **Phase 6.1 progress:**
-Phase 6.1 (Landing Page Redesign) in progress. 1 of 5 plans executed:
+Phase 6.1 (Landing Page Redesign) in progress. 2 of 5 plans executed:
 - 06.1-01: Design Foundation Setup - Lenis installed, design tokens created, hero placeholders generated
+- 06.1-02: Parallax Hero Section - SmoothScrollProvider and ParallaxHero components created
 
-Design foundation established:
-1. Lenis 1.3.17 smooth scroll library installed
-2. Design tokens: warm minimalist palette, major third type scale, 8px spacing
-3. Three parallax hero placeholder images generated (70KB total)
-4. global.css imports design-tokens.css
+Parallax hero ready:
+1. SmoothScrollProvider wraps children with Lenis smooth scrolling
+2. ParallaxHero displays 3 layers with depth effect on scroll
+3. Text/CTA reveals at bottom with whileInView animation
+4. useReducedMotion disables parallax for accessibility
+5. Mobile detection reduces parallax intensity by 50%
+6. Test page at /test-parallax for manual verification
 
-Ready for 06.1-02: Parallax hero section implementation.
+Ready for 06.1-03: Warm minimalist component styling.
 
 ---
 
 ## Session Continuity
 
-**Last session:** 2026-01-31 20:25 UTC
-**Stopped at:** Completed 06.1-01-PLAN.md - Design Foundation Setup
+**Last session:** 2026-01-31 20:35 UTC
+**Stopped at:** Completed 06.1-02-PLAN.md - Parallax Hero Section
 **Resume file:** None
 
 **If resuming this project:**
@@ -319,8 +325,8 @@ Ready for 06.1-02: Parallax hero section implementation.
 2. Read `.planning/ROADMAP.md` for phase goals and success criteria
 3. Read `.planning/REQUIREMENTS.md` for full requirement specifications
 4. Review Phase summaries: `.planning/phases/*/XX-YY-SUMMARY.md`
-5. Next: Execute 06.1-02-PLAN.md (Parallax Hero Section) using `/gsd:execute-phase 6.1`
+5. Next: Execute 06.1-03-PLAN.md (Warm Minimalist Components) using `/gsd:execute-phase 6.1`
 
 ---
 
-*Last updated: 2026-01-31 after completing 06.1-01-PLAN.md*
+*Last updated: 2026-01-31 after completing 06.1-02-PLAN.md*
