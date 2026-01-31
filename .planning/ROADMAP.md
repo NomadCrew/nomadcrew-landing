@@ -178,11 +178,47 @@ Plans:
 
 ---
 
+### Phase 6.1: Landing Page Redesign (INSERTED)
+
+**Goal:** Transform the primitive landing page into a conversion-optimized, visually compelling experience with real travel photography, bento grid features, social proof, and warm minimalist branding
+
+**Dependencies:** Phase 6 (requires functional API before redesign)
+
+**Requirements:**
+- UI-01: Hero section with travel photography or app mockups and clear value proposition
+- UI-02: Bento grid feature showcase replacing basic icon cards
+- UI-03: Social proof section (testimonials, waitlist count, or trust indicators)
+- UI-04: Expanded footer with navigation links and social media
+- UI-05: Consistent warm minimalist visual identity (typography, colors, spacing)
+
+**Success Criteria:**
+1. Hero section includes compelling visual (photography or app mockup) with social proof
+2. Features displayed in bento grid layout with variable card sizes
+3. At least one form of social proof visible (waitlist count, testimonial, or metrics)
+4. Footer includes product links, company links, and social media icons
+5. Consistent typography system using Inter font family
+6. Color palette uses 1-2 accent colors with warm neutral backgrounds
+7. All interactive elements have appropriate hover/focus states
+8. Mobile responsive design maintains visual impact
+
+**Plans:** 5 plans
+
+Plans:
+- [ ] 06.1-01-PLAN.md — Install Lenis, create design tokens, source parallax images
+- [ ] 06.1-02-PLAN.md — Build ParallaxHero with smooth scroll and bottom reveal
+- [ ] 06.1-03-PLAN.md — Create BentoFeatures grid component
+- [ ] 06.1-04-PLAN.md — Create SocialProof and ExpandedFooter components
+- [ ] 06.1-05-PLAN.md — Integrate all components into landing page
+
+**Status:** Planned
+
+---
+
 ### Phase 7: Blog System & SEO Enhancement
 
 **Goal:** Complete blog with maximum SEO optimization operational
 
-**Dependencies:** Phase 6 (core site must be functional before adding blog)
+**Dependencies:** Phase 6.1 (core site must be functional before adding blog)
 
 **Requirements:**
 - BLOG-01: Astro Content Collections configured for blog posts
@@ -251,10 +287,11 @@ Plans:
 | 4 | React Islands Extraction | MIGR-02, PERF-05, PERF-06 | Complete |
 | 5 | Landing Page Assembly | SEO-02, SEO-03, SEO-07, SEO-08 | Complete |
 | 6 | API Endpoint Migration | MIGR-05 | Complete |
+| 6.1 | Landing Page Redesign (INSERTED) | UI-01 to UI-05 | Planned |
 | 7 | Blog System & SEO Enhancement | BLOG-01 to BLOG-09, SEO-05, SEO-06, SEO-09, SEO-10 | Pending |
 | 8 | Performance Optimization & CI/CD | MIGR-06, MIGR-07, PERF-01 to PERF-04, PERF-07, PERF-08 | Pending |
 
-**Overall:** 6/8 phases complete (75%)
+**Overall:** 6/9 phases complete (67%)
 
 ---
 
@@ -270,4 +307,4 @@ No orphaned requirements.
 
 ---
 
-*Last updated: 2026-01-31 after Phase 6 execution complete*
+*Last updated: 2026-01-31 after Phase 6.1 planning complete*
