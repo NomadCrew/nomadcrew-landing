@@ -194,8 +194,8 @@ test.describe('Waitlist Form - End-to-End Submission Flow', () => {
     // Verify error message appears
     const errorMessage = page.locator('.text-red-500');
     await expect(errorMessage).toBeVisible();
-    // Network failures show "Failed to fetch" error
-    await expect(errorMessage).toContainText(/Failed to fetch|Something went wrong/);
+    // Network failures show user-friendly network error message
+    await expect(errorMessage).toContainText(/Network error|Failed to fetch|Something went wrong/);
 
     // Verify form is still usable
     await expect(submitButton).toBeEnabled();

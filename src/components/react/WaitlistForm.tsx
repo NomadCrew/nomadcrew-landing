@@ -35,10 +35,23 @@ export default function WaitlistForm() {
         body: JSON.stringify({ email }),
       });
 
-      const data = await response.json();
+      // Handle non-JSON responses gracefully
+      let data;
+      try {
+        data = await response.json();
+      } catch {
+        // If response is not JSON, create error object
+        data = { error: 'Invalid response from server' };
+      }
 
       if (!response.ok) {
         console.error('Server error:', data);
+
+        // Provide specific error messages for common HTTP status codes
+        if (response.status === 429) {
+          throw new Error('Too many requests. Please wait a moment and try again.');
+        }
+
         throw new Error(data.error || data.message || 'Failed to join waitlist');
       }
 
@@ -47,7 +60,16 @@ export default function WaitlistForm() {
     } catch (error: any) {
       console.error('Submission error:', error);
       setStatus('error');
-      setErrorMessage(error.message || 'Something went wrong. Please try again.');
+
+      // Provide user-friendly error messages
+      let friendlyMessage = error.message || 'Something went wrong. Please try again.';
+
+      // Handle network errors
+      if (error.message === 'Failed to fetch') {
+        friendlyMessage = 'Network error. Please check your connection and try again.';
+      }
+
+      setErrorMessage(friendlyMessage);
     }
   };
 
