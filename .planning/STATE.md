@@ -3,11 +3,11 @@
 ## Current Position
 
 **Phase:** 5 of 8 (Landing Page Assembly)
-**Plan:** 02 of 4 in phase
+**Plan:** 03 of 4 in phase
 **Status:** In progress
-**Last activity:** 2026-01-31 - Completed 05-02-PLAN.md (JSON-LD Structured Data)
+**Last activity:** 2026-01-31 - Completed 05-03-PLAN.md (Homepage Assembly)
 
-**Progress:** [████████████░░░░░░░░] 13/15 plans (87%)
+**Progress:** [█████████████░░░░░░░] 14/15 plans (93%)
 
 ## Project Reference
 
@@ -26,15 +26,15 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - Total: 8
 
 **Plans:**
-- Completed: 13 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans, Phase 5: 2 plans)
+- Completed: 14 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans, Phase 5: 3 plans)
 - In Progress: 0
-- Pending: 2 (Phase 5: 2 plans remaining)
+- Pending: 1 (Phase 5: 1 plan remaining)
 - Total (Phases 1-5): 15
 
 **Requirements Coverage:**
 - v2.0 requirements: 34 total
 - Mapped to phases: 34 (100%)
-- Completed: 7 (MIGR-01, MIGR-03, MIGR-04, SEO-01, SEO-04, SEO-07, SEO-08)
+- Completed: 10 (MIGR-01, MIGR-03, MIGR-04, SEO-01, SEO-02, SEO-03, SEO-04, SEO-07, SEO-08, PERF-01)
 
 **Current Phase (Phase 5):**
 - Goal: Assemble landing page with extracted islands and SEO optimization
@@ -92,6 +92,10 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | SearchAction omitted from WebSite schema | 05-02 | No search functionality in Phase 5 (deferred to Phase 7), avoids Google warnings for missing features |
 | Added og:image:width and og:image:height meta tags | 05-02 | Best practice for social previews (1200x630), prevents layout shift in Open Graph cards |
 | Test page pattern for schema verification | 05-02 | test-json-ld.astro enables manual and automated verification before production use |
+| Used test-all-islands.astro as proven landing page pattern | 05-03 | 6 passing Playwright tests from Phase 4 confirm structure works correctly |
+| Set isHomepage={true} on production landing page | 05-03 | Enables Organization and WebSite JSON-LD schemas for SEO-07 and SEO-08 |
+| Production SEO: "Group Travel, Simplified" title | 05-03 | Full value proposition for search engines and social sharing, aligns with OG image |
+| Features section id="features" for navigation | 05-03 | Minimal addition enables potential future smooth scrolling navigation |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -155,7 +159,10 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - ✓ OG image created at public/og-image.jpg (1200x630 JPEG, 76KB) (05-01 complete)
 - ✓ Bundle visualizer configured with gzipSize and brotliSize enabled (05-01 complete)
 - ✓ Build generates stats.html for bundle size monitoring (05-01 complete)
-- Current bundle size: ~87KB gzipped (under 150KB target)
+- ✓ JSON-LD schemas added to BaseLayout with isHomepage prop (05-02 complete)
+- ✓ Landing page assembled at / with all React islands (05-03 complete)
+- Current bundle size: 88KB gzipped (59% of 150KB target, PERF-01 requirement met)
+- All Playwright tests passing: 13 tests (islands + SEO + privacy)
 
 ### Phase 1 Completion Summary
 - [x] Migrate .well-known files to public/ directory (01-01 complete)
@@ -241,31 +248,34 @@ Island extraction patterns established:
 All React islands verified working together without conflicts. Test pages at /test-navbar/, /test-hero/, /test-features/, /test-waitlist/, /test-all-islands/ confirm components work individually and collectively. Ready for 04-05: Final plan (if needed) or Phase 5: Landing Page Assembly.
 
 **Phase 5 progress:**
-Phase 5 (Landing Page Assembly) in progress. 2 of 4 plans executed:
+Phase 5 (Landing Page Assembly) in progress. 3 of 4 plans executed:
 - 05-01: OG image created (1200x630 JPEG, 76KB) with orange gradient background; bundle visualizer configured with gzipSize/brotliSize tracking
 - 05-02: JSON-LD Organization and WebSite schemas added to BaseLayout.astro with conditional isHomepage prop; Playwright tests created for schema validation (SEO-07, SEO-08)
+- 05-03: Landing page assembled at / with all React islands, isHomepage={true} for JSON-LD, production SEO content, 13 passing tests
 
-SEO infrastructure complete:
-1. OG image: public/og-image.jpg for social sharing preview (SEO-02)
-2. JSON-LD schemas: Organization and WebSite schemas ready for homepage (SEO-07, SEO-08)
-3. Schema testing: 4 Playwright tests validate JSON-LD rendering and OG dimensions
-4. Conditional injection: isHomepage prop pattern enables page-specific schema control
+Landing page assembly complete:
+1. Production page at / with Navbar, Hero, Features, Waitlist, Footer
+2. isHomepage={true} enables Organization and WebSite schemas (SEO-07, SEO-08)
+3. Hydration strategy: client:load (Navbar), client:idle (Hero), client:visible (Features, Waitlist), static (Footer)
+4. All tests passing: 13 tests (6 islands + 4 SEO + 3 privacy)
+5. Bundle size verified: 88KB gzipped (59% of 150KB target - PERF-01 met)
 
-Current bundle status:
-- Total: ~87 KB gzipped (42% of 150KB target - PERF-01)
-- Bundle visualizer: stats.html tracking gzip/brotli sizes
-- TypeScript check: passing without errors
+Requirements completed:
+- SEO-02: OG image configured ✓
+- SEO-03: Social meta tags present ✓
+- SEO-07: Organization schema on homepage ✓
+- SEO-08: WebSite schema on homepage ✓
+- PERF-01: Bundle <150KB ✓ (88KB, 62KB under budget)
 
 Next steps:
-- 05-03: Assemble homepage (index.astro) with all islands and isHomepage=true
-- 05-04: Final verification and homepage deployment
+- 05-04: Final verification and homepage deployment to Cloudflare Pages
 
 ---
 
 ## Session Continuity
 
-**Last session:** 2026-01-31 09:01 UTC
-**Stopped at:** Completed 05-02-PLAN.md - JSON-LD Structured Data
+**Last session:** 2026-01-31 09:09 UTC
+**Stopped at:** Completed 05-03-PLAN.md - Homepage Assembly
 **Resume file:** None
 
 **If resuming this project:**
@@ -273,8 +283,8 @@ Next steps:
 2. Read `.planning/ROADMAP.md` for phase goals and success criteria
 3. Read `.planning/REQUIREMENTS.md` for full requirement specifications
 4. Review Phase summaries: `.planning/phases/*/XX-YY-SUMMARY.md`
-5. Next: Execute Plan 05-03 (Homepage Assembly) using `/gsd:execute-plan 03 05-landing-page-assembly`
+5. Next: Execute Plan 05-04 (Final Verification) using `/gsd:execute-plan 04 05-landing-page-assembly`
 
 ---
 
-*Last updated: 2026-01-31 after completing 05-02-PLAN.md*
+*Last updated: 2026-01-31 after completing 05-03-PLAN.md*
