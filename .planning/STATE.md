@@ -2,12 +2,12 @@
 
 ## Current Position
 
-**Phase:** 5 of 8 (Landing Page Assembly)
-**Plan:** 04 of 4 in phase
+**Phase:** 6 of 8 (API Endpoint Migration)
+**Plan:** 01 of 1 in phase
 **Status:** Complete
-**Last activity:** 2026-01-31 - Completed 05-04-PLAN.md (External SEO Verification)
+**Last activity:** 2026-01-31 - Completed 06-01-PLAN.md (API Development Environment Setup)
 
-**Progress:** [████████████████░░░░] 15/15 plans in Phases 1-5 (100%)
+**Progress:** [████████████████░░░░] 16/16 plans in Phases 1-6 (100%)
 
 ## Project Reference
 
@@ -20,27 +20,27 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 ## Performance Metrics
 
 **Phases:**
-- Completed: 5 (Phase 1: Foundation Setup, Phase 2: Cloudflare Integration, Phase 3: Static Pages Migration, Phase 4: React Islands Extraction, Phase 5: Landing Page Assembly)
+- Completed: 6 (Phase 1: Foundation Setup, Phase 2: Cloudflare Integration, Phase 3: Static Pages Migration, Phase 4: React Islands Extraction, Phase 5: Landing Page Assembly, Phase 6: API Endpoint Migration)
 - In Progress: 0
-- Pending: 3 (Phases 6-8)
+- Pending: 2 (Phases 7-8)
 - Total: 8
 
 **Plans:**
-- Completed: 15 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans, Phase 5: 4 plans)
+- Completed: 16 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans, Phase 5: 4 plans, Phase 6: 1 plan)
 - In Progress: 0
-- Pending: 0 (Phases 1-5 complete)
-- Total (Phases 1-5): 15
+- Pending: 0 (Phases 1-6 complete)
+- Total (Phases 1-6): 16
 
 **Requirements Coverage:**
 - v2.0 requirements: 34 total
 - Mapped to phases: 34 (100%)
 - Completed: 10 (MIGR-01, MIGR-03, MIGR-04, SEO-01, SEO-02, SEO-03, SEO-04, SEO-07, SEO-08, PERF-01)
 
-**Current Phase (Phase 5):**
-- Goal: Assemble landing page with extracted islands and SEO optimization
-- Requirements: SEO-02 (OG image), SEO-03 (social meta tags), PERF-01 (<150KB bundle)
-- Success Criteria: 2 defined
-- Dependencies: Phase 4 (React islands), Phase 1 (Foundation)
+**Current Phase (Phase 6):**
+- Goal: Configure local API testing environment for Cloudflare Pages Functions
+- Requirements: None (infrastructure setup)
+- Success Criteria: 4 defined (local env, tests, wrangler preview, API accessibility)
+- Dependencies: Phase 2 (Cloudflare integration), Phase 4 (WaitlistForm component)
 
 ## Accumulated Context
 
@@ -96,6 +96,9 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | Set isHomepage={true} on production landing page | 05-03 | Enables Organization and WebSite JSON-LD schemas for SEO-07 and SEO-08 |
 | Production SEO: "Group Travel, Simplified" title | 05-03 | Full value proposition for search engines and social sharing, aligns with OG image |
 | Features section id="features" for navigation | 05-03 | Minimal addition enables potential future smooth scrolling navigation |
+| Skip automated server-side API tests in CI | 06-01 | Astro dev server doesn't serve functions/, wrangler requires build step and background process |
+| Test client-side validation only with automated Playwright | 06-01 | WaitlistForm validation testable against Astro dev server, provides fast CI feedback |
+| Document manual API testing with test:api:manual script | 06-01 | Manual testing acceptable during development, automation can be added later if needed |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -119,16 +122,18 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - Layout composition: Layouts import global.css, pages import layouts
 - React island extraction: src/components/react/ for hydrated components, no props for self-contained islands
 - Test page pattern: Verify island hydration in isolation before main layout integration
+- .dev.vars pattern: Local Cloudflare environment variables (gitignored), wrangler pages dev reads automatically
+- API testing split: Client validation automated (Playwright), server responses manual (wrangler + curl)
 
 ### Next Steps
 1. ✓ Phase 1 complete - Foundation established
 2. ✓ Phase 2 complete - Cloudflare integration verified
 3. ✓ Phase 3 complete - Privacy policy migrated with visual regression tests
-4. Phase 4 in progress - React Islands Extraction (3/5 plans complete)
-   - ✓ 04-01: Navbar extraction complete
-   - ✓ 04-02: Hero and Features extraction complete
-   - ✓ 04-03: WaitlistForm and Footer extraction complete
-   - Next: 04-04/04-05 Final component extraction
+4. ✓ Phase 4 complete - React Islands Extraction (all 5 plans complete)
+5. ✓ Phase 5 complete - Landing Page Assembly (all 4 plans complete)
+6. ✓ Phase 6 complete - API Endpoint Migration (1 plan complete)
+   - ✓ 06-01: API Development Environment Setup complete
+7. Next: Plan Phase 7 (Blog & Content) using `/gsd:plan-phase 7`
 
 ### Blockers
 (none)
@@ -162,7 +167,11 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - ✓ JSON-LD schemas added to BaseLayout with isHomepage prop (05-02 complete)
 - ✓ Landing page assembled at / with all React islands (05-03 complete)
 - Current bundle size: 88KB gzipped (59% of 150KB target, PERF-01 requirement met)
-- All Playwright tests passing: 13 tests (islands + SEO + privacy)
+- All Playwright tests passing: 15 tests (13 previous + 2 API client validation)
+- ✓ .dev.vars created with RESEND_API_KEY placeholder (06-01 complete)
+- ✓ API tests created: 2 client validation automated, 5 server tests documented for manual testing (06-01 complete)
+- ✓ Wrangler pages dev verified serving /api/waitlist endpoint (06-01 complete)
+- **Action required:** Add real RESEND_API_KEY to .dev.vars for full API testing
 
 ### Phase 1 Completion Summary
 - [x] Migrate .well-known files to public/ directory (01-01 complete)
@@ -247,35 +256,33 @@ Island extraction patterns established:
 
 All React islands verified working together without conflicts. Test pages at /test-navbar/, /test-hero/, /test-features/, /test-waitlist/, /test-all-islands/ confirm components work individually and collectively. Ready for 04-05: Final plan (if needed) or Phase 5: Landing Page Assembly.
 
-**Phase 5 progress:**
-Phase 5 (Landing Page Assembly) in progress. 3 of 4 plans executed:
-- 05-01: OG image created (1200x630 JPEG, 76KB) with orange gradient background; bundle visualizer configured with gzipSize/brotliSize tracking
-- 05-02: JSON-LD Organization and WebSite schemas added to BaseLayout.astro with conditional isHomepage prop; Playwright tests created for schema validation (SEO-07, SEO-08)
-- 05-03: Landing page assembled at / with all React islands, isHomepage={true} for JSON-LD, production SEO content, 13 passing tests
+**Phase 5 completion:**
+Phase 5 (Landing Page Assembly) is complete. 4 of 4 plans executed successfully:
+- 05-01: OG image created (1200x630 JPEG, 76KB) with orange gradient background; bundle visualizer configured
+- 05-02: JSON-LD Organization and WebSite schemas added with conditional isHomepage prop
+- 05-03: Landing page assembled at / with all React islands, production SEO content
+- 05-04: External SEO verification complete, deployment to Cloudflare Pages validated
 
-Landing page assembly complete:
-1. Production page at / with Navbar, Hero, Features, Waitlist, Footer
-2. isHomepage={true} enables Organization and WebSite schemas (SEO-07, SEO-08)
-3. Hydration strategy: client:load (Navbar), client:idle (Hero), client:visible (Features, Waitlist), static (Footer)
-4. All tests passing: 13 tests (6 islands + 4 SEO + 3 privacy)
-5. Bundle size verified: 88KB gzipped (59% of 150KB target - PERF-01 met)
+Landing page complete with all islands, SEO optimization, and performance targets met. Bundle size: 88KB gzipped (59% of 150KB target). All 13 Playwright tests passing.
 
-Requirements completed:
-- SEO-02: OG image configured ✓
-- SEO-03: Social meta tags present ✓
-- SEO-07: Organization schema on homepage ✓
-- SEO-08: WebSite schema on homepage ✓
-- PERF-01: Bundle <150KB ✓ (88KB, 62KB under budget)
+**Phase 6 completion:**
+Phase 6 (API Endpoint Migration) is complete. 1 plan executed successfully:
+- 06-01: API Development Environment Setup - .dev.vars template, Playwright API tests, wrangler verification
 
-Next steps:
-- 05-04: Final verification and homepage deployment to Cloudflare Pages
+Local API testing environment configured:
+1. .dev.vars created with RESEND_API_KEY placeholder (gitignored for security)
+2. Playwright tests: 2 client validation tests passing, 5 server tests documented for manual testing
+3. Wrangler pages dev verified serving /api/waitlist endpoint with JSON responses
+4. Manual testing procedure documented in test:api:manual script
+
+API testing infrastructure ready. Next: Plan Phase 7 (Blog & Content) or Phase 8 (Optimization).
 
 ---
 
 ## Session Continuity
 
-**Last session:** 2026-01-31 09:09 UTC
-**Stopped at:** Completed 05-03-PLAN.md - Homepage Assembly
+**Last session:** 2026-01-31 08:48 UTC
+**Stopped at:** Completed 06-01-PLAN.md - API Development Environment Setup
 **Resume file:** None
 
 **If resuming this project:**
@@ -283,8 +290,8 @@ Next steps:
 2. Read `.planning/ROADMAP.md` for phase goals and success criteria
 3. Read `.planning/REQUIREMENTS.md` for full requirement specifications
 4. Review Phase summaries: `.planning/phases/*/XX-YY-SUMMARY.md`
-5. Next: Execute Plan 05-04 (Final Verification) using `/gsd:execute-plan 04 05-landing-page-assembly`
+5. Next: Plan Phase 7 (Blog & Content) using `/gsd:plan-phase 7`
 
 ---
 
-*Last updated: 2026-01-31 after completing 05-03-PLAN.md*
+*Last updated: 2026-01-31 after completing 06-01-PLAN.md*
