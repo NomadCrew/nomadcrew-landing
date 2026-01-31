@@ -1,12 +1,16 @@
 ---
 // src/pages/index.astro
-// NomadCrew Landing Page - Astro with React Islands
+// NomadCrew Landing Page - Redesigned with Warm Minimalist Design System
+// Phase 06.1-05: Final Integration
+
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/react/Navbar.tsx';
-import HeroSection from '../components/react/HeroSection.tsx';
-import FeatureCard from '../components/react/FeatureCard.tsx';
+import SmoothScrollProvider from '../components/react/SmoothScrollProvider.tsx';
+import ParallaxHero from '../components/react/ParallaxHero.tsx';
+import BentoFeatures from '../components/react/BentoFeatures.tsx';
+import SocialProof from '../components/react/SocialProof.tsx';
 import WaitlistForm from '../components/react/WaitlistForm.tsx';
-import Footer from '../components/Footer.astro';
+import ExpandedFooter from '../components/react/ExpandedFooter.tsx';
 ---
 
 <BaseLayout
@@ -17,46 +21,36 @@ import Footer from '../components/Footer.astro';
   <!-- Navbar: client:load (immediate interactivity for navigation) -->
   <Navbar client:load />
 
-  <!-- HeroSection: client:idle (animations deferred until browser idle) -->
-  <HeroSection client:idle />
+  <!--
+    SmoothScrollProvider wraps ONLY ParallaxHero (hero-only scope)
+    - Provides Lenis smooth scroll for parallax effect
+    - Other sections use standard scroll with client:visible hydration
+  -->
+  <SmoothScrollProvider client:load>
+    <ParallaxHero client:load />
+  </SmoothScrollProvider>
 
-  <!-- Features Section: client:visible (hydrate when scrolled into view) -->
-  <section id="features" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <FeatureCard
-          client:visible
-          icon="ClipboardList"
-          title="Trip Planning & Management"
-          description="Plan, manage, and collaborate on group trips with destination search and shared tools."
-        />
-        <FeatureCard
-          client:visible
-          icon="MessagesSquare"
-          title="Real-time Communication"
-          description="Stay connected with group chat, real-time messaging, media sharing, and read receipts."
-        />
-        <FeatureCard
-          client:visible
-          icon="LocateFixed"
-          title="Location Services"
-          description="Share live locations, explore interactive maps, and discover nearby places together."
-        />
-        <FeatureCard
-          client:visible
-          icon="Banknote"
-          title="Financial Management"
-          description="Track expenses effortlessly and split costs fairly among your travel group."
-        />
-      </div>
-    </div>
+  <!-- BentoFeatures: client:visible (below hero, deferred hydration) -->
+  <section id="features">
+    <BentoFeatures client:visible />
   </section>
 
-  <!-- Waitlist Section: client:visible (below-fold, deferred hydration) -->
-  <section id="waitlist" class="py-16 px-4">
+  <!-- SocialProof: client:visible (positioned above waitlist for conversion) -->
+  <SocialProof client:visible />
+
+  <!-- Waitlist Section: styled with warm minimalist design tokens -->
+  <section id="waitlist" class="py-16 px-4" style="background-color: var(--color-bg-primary, #FDFCFA);">
     <div class="container mx-auto max-w-xl text-center">
-      <h2 class="text-3xl font-bold mb-6">Join the Waitlist</h2>
-      <p class="text-gray-600 mb-8">
+      <h2
+        class="text-3xl font-bold mb-6"
+        style="color: var(--color-text-primary, #2D2520);"
+      >
+        Join the Waitlist
+      </h2>
+      <p
+        class="mb-8"
+        style="color: var(--color-text-secondary, #635750);"
+      >
         Be among the first to experience a better way to travel together.
         Get early access and exclusive updates.
       </p>
@@ -64,6 +58,6 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
-  <!-- Footer: Static Astro component (zero JavaScript) -->
-  <Footer />
+  <!-- ExpandedFooter: client:idle (low priority hydration) -->
+  <ExpandedFooter client:idle />
 </BaseLayout>
