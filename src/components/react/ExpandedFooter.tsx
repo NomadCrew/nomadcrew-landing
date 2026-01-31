@@ -21,10 +21,10 @@ const companyLinks = [
 
 const socialLinks = [
   {
-    label: 'Twitter',
-    ariaLabel: 'Follow us on X (Twitter)',
-    href: 'https://twitter.com/nomadcrew',
-    icon: Twitter,
+    label: 'X',
+    ariaLabel: 'Follow us on X',
+    href: 'https://x.com/nomadcrew',
+    icon: Twitter, // Lucide's Twitter icon - still widely used for X
   },
   {
     label: 'Instagram',
