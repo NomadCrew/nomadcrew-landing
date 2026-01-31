@@ -2,12 +2,12 @@
 
 ## Current Position
 
-**Phase:** 4 of 8 (React Islands Extraction)
-**Plan:** 04 of 5 in phase
+**Phase:** 5 of 8 (Landing Page Assembly)
+**Plan:** 02 of 4 in phase
 **Status:** In progress
-**Last activity:** 2026-01-29 - Completed 04-04-PLAN.md (Integration testing & verification)
+**Last activity:** 2026-01-31 - Completed 05-02-PLAN.md (JSON-LD Structured Data)
 
-**Progress:** [███████████░░░░░░░░░] 11/12 plans (92%)
+**Progress:** [████████████░░░░░░░░] 13/15 plans (87%)
 
 ## Project Reference
 
@@ -20,27 +20,27 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 ## Performance Metrics
 
 **Phases:**
-- Completed: 3 (Phase 1: Foundation Setup, Phase 2: Cloudflare Integration, Phase 3: Static Pages Migration)
-- In Progress: 1 (Phase 4: React Islands Extraction)
-- Pending: 4
+- Completed: 4 (Phase 1: Foundation Setup, Phase 2: Cloudflare Integration, Phase 3: Static Pages Migration, Phase 4: React Islands Extraction)
+- In Progress: 1 (Phase 5: Landing Page Assembly)
+- Pending: 3
 - Total: 8
 
 **Plans:**
-- Completed: 11 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans)
+- Completed: 13 (Phase 1: 5 plans, Phase 2: 1 plan, Phase 3: 1 plan, Phase 4: 4 plans, Phase 5: 2 plans)
 - In Progress: 0
-- Pending: 1 (Phase 4: 1 plan remaining)
-- Total (Phases 1-4): 12
+- Pending: 2 (Phase 5: 2 plans remaining)
+- Total (Phases 1-5): 15
 
 **Requirements Coverage:**
 - v2.0 requirements: 34 total
 - Mapped to phases: 34 (100%)
-- Completed: 5 (MIGR-01, MIGR-03, MIGR-04, SEO-01, SEO-04)
+- Completed: 7 (MIGR-01, MIGR-03, MIGR-04, SEO-01, SEO-04, SEO-07, SEO-08)
 
-**Current Phase (Phase 4):**
-- Goal: Extract React components from LandingPage.tsx into standalone islands
-- Requirements: MIGR-02 (React islands with selective hydration)
-- Success Criteria: 5 defined
-- Dependencies: Phase 1 (React integration), Phase 3 (migration patterns)
+**Current Phase (Phase 5):**
+- Goal: Assemble landing page with extracted islands and SEO optimization
+- Requirements: SEO-02 (OG image), SEO-03 (social meta tags), PERF-01 (<150KB bundle)
+- Success Criteria: 2 defined
+- Dependencies: Phase 4 (React islands), Phase 1 (Foundation)
 
 ## Accumulated Context
 
@@ -85,6 +85,9 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 | client:visible for WaitlistForm | 04-03 | Below-fold content, defers hydration until scrolled into view |
 | Use role-based selectors for Playwright tests | 04-04 | Avoids strict mode violations from duplicate text in dev toolbar and page content |
 | Integration test page combines all islands | 04-04 | Validates all islands work together without hydration conflicts |
+| Used sharp library for OG image generation | 05-01 | ImageMagick had environment issues in MSYS/Windows, sharp provides Node.js-native image processing |
+| Bundle visualizer with gzip and brotli sizes | 05-01 | Aligns with <150KB performance target, shows compressed sizes matching Cloudflare delivery |
+| OG image dimensions: 1200x630 pixels | 05-01 | Standard Open Graph image size for social sharing preview |
 
 ### Research Findings
 - Astro 5.16.16 stable, Astro 6 in beta
@@ -145,6 +148,10 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 - waitlist.ts function uses Cloudflare Workers API (convert to Astro endpoint in Phase 6)
 - Resend integration preserved for email confirmation
 - **Action required:** apple-app-site-association contains placeholder YOUR_TEAM_ID (needs Apple Team ID before iOS deep linking testing)
+- ✓ OG image created at public/og-image.jpg (1200x630 JPEG, 76KB) (05-01 complete)
+- ✓ Bundle visualizer configured with gzipSize and brotliSize enabled (05-01 complete)
+- ✓ Build generates stats.html for bundle size monitoring (05-01 complete)
+- Current bundle size: ~87KB gzipped (under 150KB target)
 
 ### Phase 1 Completion Summary
 - [x] Migrate .well-known files to public/ directory (01-01 complete)
@@ -180,8 +187,8 @@ See: .planning/PROJECT.md (updated 2026-01-28)
 
 ## Session Continuity
 
-**Last session:** 2026-01-29 17:54 UTC
-**Stopped at:** Completed 04-04-PLAN.md - Integration testing & verification
+**Last session:** 2026-01-31 05:00 UTC
+**Stopped at:** Completed 05-01-PLAN.md - Assets & Monitoring Setup
 **Resume file:** None
 
 **If resuming this project:**
@@ -229,6 +236,23 @@ Island extraction patterns established:
 
 All React islands verified working together without conflicts. Test pages at /test-navbar/, /test-hero/, /test-features/, /test-waitlist/, /test-all-islands/ confirm components work individually and collectively. Ready for 04-05: Final plan (if needed) or Phase 5: Landing Page Assembly.
 
+**Phase 5 progress:**
+Phase 5 (Landing Page Assembly) in progress. 1 of 2 plans executed:
+- 05-01: OG image created (1200x630 JPEG, 76KB) with orange gradient background; bundle visualizer configured with gzipSize/brotliSize tracking
+
+Assets ready for landing page assembly:
+1. OG image: public/og-image.jpg for social sharing preview (SEO-02)
+2. Bundle monitoring: stats.html generated on build, current size ~87KB gzipped (under 150KB target)
+3. Build verification: TypeScript check passing, all islands operational
+
+Current bundle breakdown (from build output):
+- client.nc8uITnr.js: 44.01 KB gzipped
+- createLucideIcon.fhZgklGt.js: 37.70 KB gzipped
+- Other islands: <3 KB each gzipped
+- Total: ~87 KB gzipped (42% of 150KB target)
+
+Ready for 05-02: Landing page assembly with all islands and SEO meta tags.
+
 ---
 
-*Last updated: 2026-01-29 after completing 04-03-PLAN.md*
+*Last updated: 2026-01-31 after completing 05-01-PLAN.md*
