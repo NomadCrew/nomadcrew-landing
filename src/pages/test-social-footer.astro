@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialProof from '../components/react/SocialProof.tsx';
+import ExpandedFooter from '../components/react/ExpandedFooter.tsx';
+---
+
+<BaseLayout title="Social & Footer Test" description="Testing social proof and footer components">
+  <!-- Spacer to simulate page content -->
+  <div class="min-h-screen bg-[var(--color-bg-primary)] flex items-center justify-center">
+    <div class="text-center">
+      <h1 class="text-[var(--font-size-3xl)] font-bold text-[var(--color-text-primary)] mb-4">
+        Social Proof & Footer Test
+      </h1>
+      <p class="text-[var(--color-text-secondary)]">
+        Scroll down to see the SocialProof and ExpandedFooter components
+      </p>
+    </div>
+  </div>
+
+  <!-- Social Proof component -->
+  <SocialProof client:visible />
+
+  <!-- Expanded Footer component -->
+  <ExpandedFooter client:idle />
+
+  <!-- Manual verification checklist -->
+  <div class="fixed top-4 right-4 bg-white p-4 rounded-lg shadow-lg max-w-xs text-sm z-50 border border-gray-200">
+    <h3 class="font-bold mb-2 text-gray-900">Verification Checklist</h3>
+    <ul class="space-y-1 text-gray-700">
+      <li>[ ] Social proof shows "500+ travelers"</li>
+      <li>[ ] Trust badges visible (Early access, etc.)</li>
+      <li>[ ] Footer has 4 columns on desktop</li>
+      <li>[ ] Footer has 2 columns on tablet</li>
+      <li>[ ] Footer stacks to 1 column on mobile</li>
+      <li>[ ] Social icons visible and clickable</li>
+      <li>[ ] Links have hover states (orange)</li>
+      <li>[ ] Copyright shows 2026</li>
+    </ul>
+  </div>
+</BaseLayout>
