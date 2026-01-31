@@ -1,0 +1,143 @@
+/**
+ * Design Tokens - Warm Minimalist Design System
+ *
+ * Color palette, typography, and spacing scales for NomadCrew landing page.
+ * Based on major third (1.250) type ratio and 8px spacing unit.
+ */
+
+:root {
+  /* ========================================
+   * COLORS - Warm Minimalist Palette
+   * ======================================== */
+
+  /* Background Colors */
+  --color-bg-primary: #FDFCFA;      /* Warm off-white - main background */
+  --color-bg-secondary: #F5F3EF;    /* Light beige - section backgrounds */
+  --color-bg-tertiary: #EBE8E1;     /* Taupe tint - cards, overlays */
+
+  /* Accent Colors */
+  --color-accent-primary: #E87B4E;  /* Warm coral/terracotta - primary CTA */
+  --color-accent-hover: #D4653E;    /* Darker coral - hover states */
+  --color-accent-light: #F5A17C;    /* Light coral - highlights */
+
+  /* Text Colors */
+  --color-text-primary: #2D2520;    /* Warm near-black - headings, body */
+  --color-text-secondary: #635750;  /* Warm gray - secondary text */
+  --color-text-muted: #9B8F85;      /* Lighter gray - captions, hints */
+  --color-text-inverse: #FDFCFA;    /* Inverted for dark backgrounds */
+
+  /* Semantic Colors */
+  --color-success: #4A9B7C;         /* Muted teal green */
+  --color-error: #C75D5D;           /* Muted warm red */
+  --color-warning: #D4A534;         /* Muted gold */
+
+  /* ========================================
+   * TYPOGRAPHY - Inter with System Fallbacks
+   * ======================================== */
+
+  /* Font Families */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Type Scale - Major Third Ratio (1.250)
+   * Base: 16px (1rem)
+   * Ratio: 1.250
+   * Sizes: xs(0.64rem) sm(0.8rem) base(1rem) lg(1.25rem) xl(1.563rem) 2xl(1.953rem) 3xl(2.441rem) 4xl(3.052rem)
+   */
+  --font-size-xs: 0.64rem;          /* 10.24px - tiny labels */
+  --font-size-sm: 0.8rem;           /* 12.8px - small text, captions */
+  --font-size-base: 1rem;           /* 16px - body text */
+  --font-size-lg: 1.25rem;          /* 20px - large body, small headings */
+  --font-size-xl: 1.563rem;         /* 25px - h4 */
+  --font-size-2xl: 1.953rem;        /* 31.25px - h3 */
+  --font-size-3xl: 2.441rem;        /* 39px - h2 */
+  --font-size-4xl: 3.052rem;        /* 48.83px - h1 */
+
+  /* Line Heights */
+  --line-height-tight: 1.1;         /* Headings */
+  --line-height-snug: 1.3;          /* Subheadings */
+  --line-height-normal: 1.5;        /* Body text */
+  --line-height-relaxed: 1.75;      /* Long-form content */
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+
+  /* ========================================
+   * SPACING - 8px Base Unit System
+   * ======================================== */
+
+  --space-0: 0;
+  --space-1: 0.25rem;               /* 4px */
+  --space-2: 0.5rem;                /* 8px - base unit */
+  --space-3: 0.75rem;               /* 12px */
+  --space-4: 1rem;                  /* 16px */
+  --space-5: 1.25rem;               /* 20px */
+  --space-6: 1.5rem;                /* 24px */
+  --space-8: 2rem;                  /* 32px */
+  --space-10: 2.5rem;               /* 40px */
+  --space-12: 3rem;                 /* 48px */
+  --space-16: 4rem;                 /* 64px */
+  --space-20: 5rem;                 /* 80px */
+  --space-24: 6rem;                 /* 96px */
+
+  /* ========================================
+   * BORDERS & RADIUS
+   * ======================================== */
+
+  --border-width-thin: 1px;
+  --border-width-base: 2px;
+  --border-width-thick: 4px;
+
+  --radius-sm: 0.25rem;             /* 4px */
+  --radius-base: 0.5rem;            /* 8px */
+  --radius-md: 0.75rem;             /* 12px */
+  --radius-lg: 1rem;                /* 16px */
+  --radius-xl: 1.5rem;              /* 24px */
+  --radius-full: 9999px;            /* Pill shape */
+
+  /* ========================================
+   * SHADOWS - Soft, warm tinted
+   * ======================================== */
+
+  --shadow-sm: 0 1px 2px rgba(45, 37, 32, 0.05);
+  --shadow-base: 0 2px 4px rgba(45, 37, 32, 0.08);
+  --shadow-md: 0 4px 8px rgba(45, 37, 32, 0.1);
+  --shadow-lg: 0 8px 16px rgba(45, 37, 32, 0.12);
+  --shadow-xl: 0 16px 32px rgba(45, 37, 32, 0.15);
+
+  /* ========================================
+   * TRANSITIONS - Smooth animations
+   * ======================================== */
+
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --duration-slower: 600ms;
+
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ========================================
+   * Z-INDEX SCALE
+   * ======================================== */
+
+  --z-behind: -1;
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-tooltip: 60;
+}
