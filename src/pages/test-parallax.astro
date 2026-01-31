@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SmoothScrollProvider from '../components/react/SmoothScrollProvider.tsx';
+import ParallaxHero from '../components/react/ParallaxHero.tsx';
+---
+
+<BaseLayout title="Parallax Test" description="Testing parallax hero">
+  <SmoothScrollProvider client:load>
+    <ParallaxHero client:load />
+  </SmoothScrollProvider>
+
+  <!-- Spacer to allow scrolling past hero -->
+  <div class="h-screen bg-gray-100 flex items-center justify-center">
+    <p class="text-2xl text-gray-600">Scroll content below hero</p>
+  </div>
+
+  <!-- Manual verification checklist -->
+  <div class="p-8 bg-white">
+    <h2 class="text-xl font-bold mb-4">Parallax Verification Checklist</h2>
+    <ul class="space-y-2 text-gray-700">
+      <li>[ ] Images load and display (3 layers visible)</li>
+      <li>[ ] Layers move at different speeds on scroll</li>
+      <li>[ ] Text reveals smoothly at bottom</li>
+      <li>[ ] CTA button is clickable and links to #waitlist</li>
+      <li>[ ] Test with prefers-reduced-motion enabled (no parallax movement)</li>
+      <li>[ ] Test on mobile viewport (DevTools) - reduced parallax intensity</li>
+    </ul>
+
+    <h3 class="text-lg font-semibold mt-6 mb-3">How to test reduced motion:</h3>
+    <ol class="space-y-1 text-gray-600 list-decimal list-inside">
+      <li>Open DevTools (F12)</li>
+      <li>Press Ctrl+Shift+P (Command palette)</li>
+      <li>Type "reduced motion"</li>
+      <li>Select "Emulate CSS prefers-reduced-motion: reduce"</li>
+      <li>Scroll - images should NOT move with parallax</li>
+    </ol>
+  </div>
+</BaseLayout>
