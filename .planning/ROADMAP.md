@@ -142,12 +142,12 @@ Plans:
 **Plans:** 4 plans
 
 Plans:
-- [ ] 05-01-PLAN.md — Create OG image and configure bundle visualizer
-- [ ] 05-02-PLAN.md — Add JSON-LD schemas to BaseLayout
-- [ ] 05-03-PLAN.md — Compose landing page with all React islands
-- [ ] 05-04-PLAN.md — Verify with social sharing tools and Rich Results Test
+- [x] 05-01-PLAN.md — Create OG image and configure bundle visualizer
+- [x] 05-02-PLAN.md — Add JSON-LD schemas to BaseLayout
+- [x] 05-03-PLAN.md — Compose landing page with all React islands
+- [x] 05-04-PLAN.md — Verify with social sharing tools and Rich Results Test
 
-**Status:** Pending
+**Status:** Complete
 
 ---
 
@@ -242,12 +242,12 @@ Plans:
 | 2 | Cloudflare Integration | MIGR-03 | Complete |
 | 3 | Static Pages Migration | SEO-01, SEO-04 | Complete |
 | 4 | React Islands Extraction | MIGR-02, PERF-05, PERF-06 | Complete |
-| 5 | Landing Page Assembly | SEO-02, SEO-03, SEO-07, SEO-08 | Pending |
+| 5 | Landing Page Assembly | SEO-02, SEO-03, SEO-07, SEO-08 | Complete |
 | 6 | API Endpoint Migration | MIGR-05 | Pending |
 | 7 | Blog System & SEO Enhancement | BLOG-01 to BLOG-09, SEO-05, SEO-06, SEO-09, SEO-10 | Pending |
 | 8 | Performance Optimization & CI/CD | MIGR-06, MIGR-07, PERF-01 to PERF-04, PERF-07, PERF-08 | Pending |
 
-**Overall:** 4/8 phases complete (50%)
+**Overall:** 5/8 phases complete (62.5%)
 
 ---
 
@@ -263,4 +263,4 @@ No orphaned requirements.
 
 ---
 
-*Last updated: 2026-01-31 after Phase 5 planning complete*
+*Last updated: 2026-01-31 after Phase 5 execution complete*
