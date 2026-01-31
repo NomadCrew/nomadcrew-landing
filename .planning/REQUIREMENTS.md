@@ -10,23 +10,23 @@ Requirements for Astro SEO Migration milestone. Each maps to roadmap phases.
 ### Migration & Infrastructure
 
 - [x] **MIGR-01**: Site runs on Astro 5.x framework with TypeScript
-- [ ] **MIGR-02**: Interactive components use React islands with selective hydration
+- [x] **MIGR-02**: Interactive components use React islands with selective hydration
 - [x] **MIGR-03**: Site deploys to Cloudflare Pages (static output, no adapter needed)
 - [x] **MIGR-04**: iOS/Android deep linking preserved (.well-known files work)
-- [ ] **MIGR-05**: Waitlist API endpoint functions correctly (Resend integration)
+- [x] **MIGR-05**: Waitlist API endpoint functions correctly (Resend integration)
 - [ ] **MIGR-06**: GitHub Actions CI/CD pipeline automates build and deploy
 - [ ] **MIGR-07**: Automated deployment triggers on push to main branch
 
 ### SEO Implementation
 
 - [x] **SEO-01**: Each page has unique title and meta description
-- [ ] **SEO-02**: Open Graph tags render correctly for social sharing
-- [ ] **SEO-03**: Twitter card meta tags display properly
+- [x] **SEO-02**: Open Graph tags render correctly for social sharing
+- [x] **SEO-03**: Twitter card meta tags display properly
 - [x] **SEO-04**: Canonical URLs set for all pages
 - [ ] **SEO-05**: robots.txt file controls crawler access
 - [ ] **SEO-06**: XML sitemap auto-generates and updates on build
-- [ ] **SEO-07**: JSON-LD Organization schema on homepage
-- [ ] **SEO-08**: JSON-LD WebSite schema with search action
+- [x] **SEO-07**: JSON-LD Organization schema on homepage
+- [x] **SEO-08**: JSON-LD WebSite schema with search action
 - [ ] **SEO-09**: JSON-LD Article schema on blog posts
 - [ ] **SEO-10**: JSON-LD BreadcrumbList schema on blog posts
 
@@ -48,8 +48,8 @@ Requirements for Astro SEO Migration milestone. Each maps to roadmap phases.
 - [ ] **PERF-02**: INP (Interaction to Next Paint) ≤ 200ms
 - [ ] **PERF-03**: CLS (Cumulative Layout Shift) ≤ 0.1
 - [ ] **PERF-04**: Images optimized with WebP/AVIF formats
-- [ ] **PERF-05**: Static components use Astro (no JS shipped)
-- [ ] **PERF-06**: Interactive components use appropriate hydration (client:visible, client:idle)
+- [x] **PERF-05**: Static components use Astro (no JS shipped)
+- [x] **PERF-06**: Interactive components use appropriate hydration (client:visible, client:idle)
 - [ ] **PERF-07**: Lighthouse CI runs in GitHub Actions pipeline
 - [ ] **PERF-08**: Bundle size tracked and monitored
 
@@ -97,20 +97,20 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | MIGR-01 | Phase 1 | Complete |
-| MIGR-02 | Phase 4 | Pending |
+| MIGR-02 | Phase 4 | Complete |
 | MIGR-03 | Phase 2 | Complete |
 | MIGR-04 | Phase 1 | Complete |
-| MIGR-05 | Phase 6 | Pending |
+| MIGR-05 | Phase 6 | Complete |
 | MIGR-06 | Phase 8 | Pending |
 | MIGR-07 | Phase 8 | Pending |
 | SEO-01 | Phase 3 | Complete |
-| SEO-02 | Phase 5 | Pending |
-| SEO-03 | Phase 5 | Pending |
+| SEO-02 | Phase 5 | Complete |
+| SEO-03 | Phase 5 | Complete |
 | SEO-04 | Phase 3 | Complete |
 | SEO-05 | Phase 7 | Pending |
 | SEO-06 | Phase 7 | Pending |
-| SEO-07 | Phase 5 | Pending |
-| SEO-08 | Phase 5 | Pending |
+| SEO-07 | Phase 5 | Complete |
+| SEO-08 | Phase 5 | Complete |
 | SEO-09 | Phase 7 | Pending |
 | SEO-10 | Phase 7 | Pending |
 | BLOG-01 | Phase 7 | Pending |
@@ -126,8 +126,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PERF-02 | Phase 8 | Pending |
 | PERF-03 | Phase 8 | Pending |
 | PERF-04 | Phase 8 | Pending |
-| PERF-05 | Phase 4 | Pending |
-| PERF-06 | Phase 4 | Pending |
+| PERF-05 | Phase 4 | Complete |
+| PERF-06 | Phase 4 | Complete |
 | PERF-07 | Phase 8 | Pending |
 | PERF-08 | Phase 8 | Pending |
 
