@@ -47,7 +47,7 @@ export default function SocialProof() {
             </span>
             <span className="flex items-center gap-2" style={{ color: '#635750' }}>
               <CheckCircle className="w-5 h-5" style={{ color: '#4A9B7C' }} />
-              Free forever plan
+              Free for founding members
             </span>
           </div>
         </motion.div>
