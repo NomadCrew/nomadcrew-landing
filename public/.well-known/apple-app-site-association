@@ -3,9 +3,17 @@
         "apps": [],
         "details": [
             {
-                "appID": "YOUR_TEAM_ID.com.nomadcrew.app",
+                "appID": "27DC66D35A.com.nomadcrew.app",
                 "paths": [
-                    "/invite/accept/*"
+                    "/invite/accept/*",
+                    "/trip/*"
+                ]
+            },
+            {
+                "appID": "27DC66D35A.com.nomadcrew.app.dev",
+                "paths": [
+                    "/invite/accept/*",
+                    "/trip/*"
                 ]
             }
         ]
