@@ -73,67 +73,81 @@ export default function WaitlistForm() {
     }
   };
 
+  if (status === 'success') {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+        className="flex flex-col items-center gap-3 py-4"
+      >
+        <div
+          className="w-12 h-12 rounded-full flex items-center justify-center"
+          style={{ backgroundColor: 'rgba(74, 155, 124, 0.15)' }}
+        >
+          <span className="text-lg" style={{ color: '#4A9B7C' }}>&#10003;</span>
+        </div>
+        <p className="text-xl font-bold" style={{ color: '#2D2520' }}>
+          You're officially crew.
+        </p>
+        <p className="text-base font-medium" style={{ color: '#635750' }}>
+          We'll let you know the moment it's ready. Tell your friends — they'll thank you later.
+        </p>
+      </motion.div>
+    );
+  }
+
   return (
-    <motion.form
-      onSubmit={handleSubmit}
-      className="flex flex-col sm:flex-row gap-4 justify-center"
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.2 }}
     >
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Your email"
-        disabled={status === 'loading' || status === 'success'}
-        className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:bg-gray-100"
-      />
-      <motion.button
-        type="submit"
-        disabled={status === 'loading' || status === 'success'}
-        whileHover={status === 'idle' || status === 'error' ? { scale: 1.05 } : {}}
-        whileTap={status === 'idle' || status === 'error' ? { scale: 0.95 } : {}}
-        className={`px-8 py-3 rounded-lg font-semibold whitespace-nowrap flex items-center justify-center gap-2 ${
-          status === 'success'
-            ? 'bg-green-500 text-white'
-            : status === 'error'
-            ? 'bg-red-500 text-white'
-            : 'bg-orange-500 text-white hover:bg-orange-600'
-        } transition-colors disabled:opacity-50`}
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col sm:flex-row gap-4 justify-center"
       >
-        {status === 'loading' ? (
-          <>
-            <Loader2 className="animate-spin" size={16} />
-            Joining...
-          </>
-        ) : status === 'success' ? (
-          "You're In"
-        ) : status === 'error' ? (
-          'Try Again'
-        ) : (
-          'Get Early Access'
-        )}
-      </motion.button>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Your email"
+          disabled={status === 'loading'}
+          className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:bg-gray-100"
+        />
+        <motion.button
+          type="submit"
+          disabled={status === 'loading'}
+          whileHover={status !== 'loading' ? { scale: 1.05 } : {}}
+          whileTap={status !== 'loading' ? { scale: 0.95 } : {}}
+          className={`px-8 py-3 rounded-lg font-semibold whitespace-nowrap flex items-center justify-center gap-2 ${
+            status === 'error'
+              ? 'bg-red-500 text-white'
+              : 'bg-orange-500 text-white hover:bg-orange-600'
+          } transition-colors disabled:opacity-50`}
+        >
+          {status === 'loading' ? (
+            <>
+              <Loader2 className="animate-spin" size={16} />
+              Joining...
+            </>
+          ) : status === 'error' ? (
+            'Try Again'
+          ) : (
+            'Get Early Access'
+          )}
+        </motion.button>
+      </form>
       {errorMessage && (
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="mt-4 text-red-500 w-full text-center"
+          className="mt-4 text-red-500 text-center"
         >
           {errorMessage}
         </motion.p>
       )}
-      {status === 'success' && (
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mt-4 text-green-600 w-full text-center"
-        >
-          Welcome to NomadCrew. You're officially crew. We'll let you know the moment it's ready.
-        </motion.p>
-      )}
-    </motion.form>
+    </motion.div>
   );
 }

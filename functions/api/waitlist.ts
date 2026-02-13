@@ -70,17 +70,22 @@ export async function onRequest(context) {
     const supabaseAnonKey = context.env.SUPABASE_ANON_KEY;
     if (supabaseUrl && supabaseAnonKey) {
       try {
+        console.log(`[Waitlist] Inserting into Supabase: ${supabaseUrl}/rest/v1/waitlist_signups`);
         const dbRes = await fetch(`${supabaseUrl}/rest/v1/waitlist_signups`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'apikey': supabaseAnonKey,
-            'Authorization': `Bearer ${supabaseAnonKey}`
+            'Authorization': `Bearer ${supabaseAnonKey}`,
+            'Prefer': 'return=minimal'
           },
           body: JSON.stringify({ email })
         });
-        if (!dbRes.ok && dbRes.status !== 409) {
-          // 409 = duplicate email, OK to ignore
+        if (dbRes.ok || dbRes.status === 201) {
+          console.log('[Waitlist] Supabase insert successful, status:', dbRes.status);
+        } else if (dbRes.status === 409) {
+          console.log('[Waitlist] Email already exists in waitlist (duplicate)');
+        } else {
           const errText = await dbRes.text();
           console.error('[Waitlist] Supabase insert error:', dbRes.status, errText);
         }

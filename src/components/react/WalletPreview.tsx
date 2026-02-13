@@ -4,7 +4,6 @@ import {
   Plane,
   Hotel,
   Ticket,
-  QrCode,
   Clock,
   Users,
   ChevronRight,
@@ -37,32 +36,32 @@ interface Pass {
 const mockPasses: Pass[] = [
   {
     id: '1',
-    type: 'flight',
-    title: 'GA 875',
-    subtitle: 'JFK → DPS',
-    date: 'Mar 15',
-    time: '6:45 AM',
-    details: 'Gate B12 · Seat 24A',
+    type: 'hotel',
+    title: 'The Langham',
+    subtitle: 'London, UK',
+    date: 'Mar 12-15',
+    details: 'Conf #441938',
     shared: true,
   },
   {
     id: '2',
-    type: 'hotel',
-    title: 'Alila Seminyak',
-    subtitle: 'Bali, Indonesia',
-    date: 'Mar 15-18',
-    details: 'Conf #889472',
+    type: 'event',
+    title: 'Hamilton',
+    subtitle: 'West End',
+    date: 'Mar 14',
+    time: '7:30 PM',
+    details: '2 tickets',
     shared: true,
   },
   {
     id: '3',
-    type: 'event',
-    title: 'Mt. Batur Trek',
-    subtitle: 'Sunrise Experience',
-    date: 'Mar 17',
-    time: '2:00 AM',
-    details: '2 tickets',
-    shared: false,
+    type: 'flight',
+    title: 'BA 217',
+    subtitle: 'LHR → JFK',
+    date: 'Mar 15',
+    time: '10:30 AM',
+    details: 'Gate A7 · Seat 14F',
+    shared: true,
   },
 ];
 
@@ -73,7 +72,7 @@ const PassIcon = ({ type }: { type: Pass['type'] }) => {
     event: Ticket,
   };
   const Icon = icons[type];
-  return <Icon className="w-5 h-5" />;
+  return <Icon className="w-3 h-3" />;
 };
 
 const PassCard = ({ pass, index }: { pass: Pass; index: number }) => {
@@ -90,11 +89,11 @@ const PassCard = ({ pass, index }: { pass: Pass; index: number }) => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="flex items-center gap-3 p-3 rounded-xl transition-all duration-200 hover:bg-[#EBE8E1]/50 cursor-pointer group"
+      className="flex items-center gap-2 p-2.5 rounded-lg transition-all duration-200 hover:bg-[#EBE8E1]/50 cursor-pointer group"
     >
       {/* Icon */}
       <div
-        className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+        className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0"
         style={{ backgroundColor: colors.bg }}
       >
         <span style={{ color: colors.text }}>
@@ -104,34 +103,33 @@ const PassCard = ({ pass, index }: { pass: Pass; index: number }) => {
 
       {/* Content */}
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2">
-          <span className="font-semibold text-sm" style={{ color: '#2D2520' }}>
+        <div className="flex items-center gap-1">
+          <span className="font-semibold text-[10px] whitespace-nowrap" style={{ color: '#2D2520' }}>
             {pass.title}
           </span>
-          <span className="text-xs" style={{ color: '#9B8F85' }}>
+          <span className="text-[9px] truncate" style={{ color: '#9B8F85' }}>
             {pass.subtitle}
           </span>
         </div>
-        <div className="flex items-center gap-2 mt-0.5">
-          <span className="text-xs" style={{ color: '#635750' }}>
+        <div className="flex items-center gap-1 mt-0.5">
+          <span className="text-[9px] whitespace-nowrap" style={{ color: '#635750' }}>
             {pass.date}
             {pass.time && ` · ${pass.time}`}
           </span>
-          <span className="text-xs" style={{ color: '#9B8F85' }}>
+          <span className="text-[9px] truncate" style={{ color: '#9B8F85' }}>
             {pass.details}
           </span>
         </div>
       </div>
 
-      {/* Shared indicator & QR */}
-      <div className="flex items-center gap-2 flex-shrink-0">
+      {/* Shared indicator */}
+      <div className="flex items-center flex-shrink-0">
         {pass.shared && (
-          <div className="flex items-center gap-1 text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: '#EBE8E1', color: '#635750' }}>
-            <Users className="w-3 h-3" />
+          <div className="flex items-center gap-0.5 text-[8px] px-1 py-0.5 rounded-full" style={{ backgroundColor: '#EBE8E1', color: '#635750' }}>
+            <Users className="w-2 h-2" />
             <span>Shared</span>
           </div>
         )}
-        <QrCode className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: '#9B8F85' }} />
       </div>
     </motion.div>
   );
@@ -174,36 +172,51 @@ export default function WalletPreview() {
           >
             {/* Phone Frame */}
             <div
-              className="w-[280px] sm:w-[320px] rounded-[2.5rem] p-3 shadow-xl"
+              className="w-[220px] sm:w-[240px] rounded-[2rem] p-2.5 shadow-xl"
               style={{ backgroundColor: '#2D2520' }}
             >
               {/* Screen */}
               <div
-                className="rounded-[2rem] overflow-hidden"
+                className="rounded-[1.5rem] overflow-hidden"
                 style={{ backgroundColor: '#FDFCFA' }}
               >
-                {/* Status Bar */}
-                <div className="flex items-center justify-between px-6 py-2" style={{ backgroundColor: '#F5F3EF' }}>
-                  <span className="text-xs font-medium" style={{ color: '#635750' }}>9:41</span>
-                  <div className="flex items-center gap-1">
-                    <div className="w-4 h-2 rounded-sm" style={{ backgroundColor: '#4A9B7C' }} />
+                {/* Status Bar with Dynamic Island */}
+                <div className="relative pt-1.5 pb-1 px-4" style={{ backgroundColor: '#F5F3EF' }}>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[8px] font-semibold" style={{ color: '#635750' }}>9:41</span>
+                    <div className="flex items-center gap-1">
+                      <div className="flex items-end gap-[1.5px]">
+                        <div className="w-[2px] h-[3px] rounded-[0.5px]" style={{ backgroundColor: '#635750' }} />
+                        <div className="w-[2px] h-[5px] rounded-[0.5px]" style={{ backgroundColor: '#635750' }} />
+                        <div className="w-[2px] h-[7px] rounded-[0.5px]" style={{ backgroundColor: '#635750' }} />
+                        <div className="w-[2px] h-[9px] rounded-[0.5px]" style={{ backgroundColor: '#9B8F85' }} />
+                      </div>
+                      <div className="w-[14px] h-[7px] rounded-[1.5px] border border-[#635750] relative ml-0.5">
+                        <div className="absolute inset-[1px] rounded-[0.5px]" style={{ backgroundColor: '#4A9B7C', width: '60%' }} />
+                      </div>
+                    </div>
                   </div>
+                  {/* Dynamic Island */}
+                  <div
+                    className="absolute left-1/2 -translate-x-1/2 top-1 w-[70px] h-[20px] rounded-full z-10"
+                    style={{ backgroundColor: '#1A1614' }}
+                  />
                 </div>
 
                 {/* Wallet Header */}
-                <div className="px-4 py-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
+                <div className="px-3 py-5">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-1.5">
                       <div
-                        className="w-8 h-8 rounded-lg flex items-center justify-center"
+                        className="w-6 h-6 rounded-md flex items-center justify-center"
                         style={{ backgroundColor: 'rgba(232, 123, 78, 0.15)' }}
                       >
-                        <Wallet className="w-4 h-4" style={{ color: '#E87B4E' }} />
+                        <Wallet className="w-3 h-3" style={{ color: '#E87B4E' }} />
                       </div>
-                      <span className="font-semibold" style={{ color: '#2D2520' }}>Wallet</span>
+                      <span className="font-semibold text-xs" style={{ color: '#2D2520' }}>Wallet</span>
                     </div>
                     <button
-                      className="text-sm font-medium"
+                      className="text-[10px] font-medium"
                       style={{ color: '#E87B4E' }}
                     >
                       + Add
@@ -211,58 +224,58 @@ export default function WalletPreview() {
                   </div>
 
                   {/* Coming Up Section */}
-                  <div className="mb-3">
-                    <div className="flex items-center gap-1.5 mb-2">
-                      <Clock className="w-3.5 h-3.5" style={{ color: '#9B8F85' }} />
-                      <span className="text-xs font-medium uppercase tracking-wide" style={{ color: '#9B8F85' }}>
+                  <div className="mb-2">
+                    <div className="flex items-center gap-1 mb-1.5">
+                      <Clock className="w-3 h-3" style={{ color: '#9B8F85' }} />
+                      <span className="text-[9px] font-medium uppercase tracking-wide" style={{ color: '#9B8F85' }}>
                         Coming Up
                       </span>
                     </div>
                   </div>
 
                   {/* Pass List */}
-                  <div className="space-y-1">
+                  <div className="space-y-2.5">
                     {mockPasses.map((pass, index) => (
                       <PassCard key={pass.id} pass={pass} index={index} />
                     ))}
                   </div>
 
                   {/* Trip Collections */}
-                  <div className="mt-4 pt-4 border-t" style={{ borderColor: '#EBE8E1' }}>
-                    <span className="text-xs font-medium uppercase tracking-wide" style={{ color: '#9B8F85' }}>
+                  <div className="mt-5 pt-4 border-t" style={{ borderColor: '#EBE8E1' }}>
+                    <span className="text-[8px] font-medium uppercase tracking-wide" style={{ color: '#9B8F85' }}>
                       Trip Collections
                     </span>
-                    <div className="flex gap-2 mt-2">
+                    <div className="flex gap-1.5 mt-1.5">
                       <div
-                        className="flex-1 p-3 rounded-xl text-center"
+                        className="flex-1 p-2 rounded-lg text-center"
                         style={{ backgroundColor: '#F5F3EF' }}
                       >
-                        <span className="text-lg">🏝️</span>
-                        <p className="text-xs font-medium mt-1" style={{ color: '#2D2520' }}>Bali Trip</p>
-                        <p className="text-[10px]" style={{ color: '#9B8F85' }}>8 items</p>
+                        <span className="text-xs">🏙️</span>
+                        <p className="text-[9px] font-medium mt-0.5" style={{ color: '#2D2520' }}>London</p>
+                        <p className="text-[7px]" style={{ color: '#9B8F85' }}>6 items</p>
                       </div>
                       <div
-                        className="flex-1 p-3 rounded-xl text-center"
+                        className="flex-1 p-2 rounded-lg text-center"
                         style={{ backgroundColor: '#F5F3EF' }}
                       >
-                        <span className="text-lg">🇵🇹</span>
-                        <p className="text-xs font-medium mt-1" style={{ color: '#2D2520' }}>Portugal</p>
-                        <p className="text-[10px]" style={{ color: '#9B8F85' }}>5 items</p>
+                        <span className="text-xs">✈️</span>
+                        <p className="text-[9px] font-medium mt-0.5" style={{ color: '#2D2520' }}>NYC Trip</p>
+                        <p className="text-[7px]" style={{ color: '#9B8F85' }}>4 items</p>
                       </div>
                       <div
-                        className="flex-1 p-3 rounded-xl text-center border-2 border-dashed flex flex-col items-center justify-center"
+                        className="flex-1 p-2 rounded-lg text-center border border-dashed flex flex-col items-center justify-center"
                         style={{ borderColor: '#EBE8E1' }}
                       >
-                        <span className="text-sm" style={{ color: '#9B8F85' }}>+</span>
-                        <p className="text-[10px]" style={{ color: '#9B8F85' }}>New</p>
+                        <span className="text-[9px]" style={{ color: '#9B8F85' }}>+</span>
+                        <p className="text-[7px]" style={{ color: '#9B8F85' }}>New</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Bottom Nav Indicator */}
-                <div className="flex justify-center pb-2">
-                  <div className="w-24 h-1 rounded-full" style={{ backgroundColor: '#2D2520' }} />
+                <div className="flex justify-center pb-4 pt-2">
+                  <div className="w-20 h-0.5 rounded-full" style={{ backgroundColor: '#2D2520' }} />
                 </div>
               </div>
             </div>
