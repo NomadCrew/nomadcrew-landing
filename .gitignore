@@ -28,3 +28,6 @@ stats.html
 *.njsproj
 *.sln
 *.sw?
+
+# Windows nul artifact (reserved device name)
+nul

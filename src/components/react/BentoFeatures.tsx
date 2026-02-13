@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ClipboardList, MessagesSquare, LocateFixed, Banknote, type LucideIcon } from 'lucide-react';
+import { ClipboardList, MessagesSquare, Wallet, Banknote, type LucideIcon } from 'lucide-react';
 
 interface Feature {
   icon: LucideIcon;
@@ -11,26 +11,26 @@ interface Feature {
 const features: Feature[] = [
   {
     icon: ClipboardList,
-    title: "Trip Planning & Management",
-    description: "Plan, manage, and collaborate on group trips with destination search and shared tools.",
+    title: "Everyone Sees the Plan",
+    description: "No more chasing 8 people across 3 group chats. Build your itinerary together. Vote on where to go. One shared view, zero guesswork.",
     size: "large",
   },
   {
     icon: MessagesSquare,
-    title: "Real-time Communication",
-    description: "Stay connected with group chat, real-time messaging, media sharing, and read receipts.",
+    title: "Decisions, Not Just Messages",
+    description: "A group chat built for trips. Plans get pinned. Polls get answered. That restaurant link from Tuesday doesn't get buried under 47 messages about sunscreen.",
     size: "wide",
   },
   {
-    icon: LocateFixed,
-    title: "Location Services",
-    description: "Share live locations, explore interactive maps, and discover nearby places together.",
+    icon: Wallet,
+    title: "Every Pass. One Tap.",
+    description: "Boarding passes, hotel confirmations, tickets — all in one place. No digging through email at the gate.",
     size: "small",
   },
   {
     icon: Banknote,
-    title: "Financial Management",
-    description: "Track expenses effortlessly and split costs fairly among your travel group.",
+    title: "Split It Without the Awkward",
+    description: "Track costs as you go. Everyone sees what they owe. No spreadsheets, no \u201CI'll pay you back later\u201D that never comes.",
     size: "small",
   },
 ];
@@ -52,11 +52,11 @@ export default function BentoFeatures() {
     <section className="py-16 px-4" style={{ backgroundColor: '#F5F3EF' }}>
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#2D2520' }}>
-          Everything you need for group travel
+          Your group chat was never built for this.
         </h2>
         <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
-          style={{ gridAutoRows: '200px', gridAutoFlow: 'dense' }}
+          style={{ gridAutoRows: 'minmax(200px, auto)', gridAutoFlow: 'dense' }}
         >
           {features.map((feature, index) => {
             const Icon = feature.icon;
@@ -122,24 +122,6 @@ export default function BentoFeatures() {
                   </p>
                 </div>
 
-                {isLarge && (
-                  <div className="mt-4 flex items-center font-medium" style={{ color: '#E87B4E' }}>
-                    <span className="text-sm">Explore features</span>
-                    <svg
-                      className="w-4 h-4 ml-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                )}
               </motion.div>
             );
           })}

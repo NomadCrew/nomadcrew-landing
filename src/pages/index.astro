@@ -8,14 +8,15 @@ import Navbar from '../components/react/Navbar.tsx';
 import SmoothScrollProvider from '../components/react/SmoothScrollProvider.tsx';
 import ParallaxHero from '../components/react/ParallaxHero.tsx';
 import BentoFeatures from '../components/react/BentoFeatures.tsx';
+import WalletPreview from '../components/react/WalletPreview.tsx';
 import SocialProof from '../components/react/SocialProof.tsx';
 import WaitlistForm from '../components/react/WaitlistForm.tsx';
 import ExpandedFooter from '../components/react/ExpandedFooter.tsx';
 ---
 
 <BaseLayout
-  title="Group Travel, Simplified"
-  description="Coordinate plans, share locations, manage expenses, and chat in real-time - all within a single, mobile-first app designed for modern group travel."
+  title="Stop Planning Trips in 6 Different Apps"
+  description="Your group chat has 47 messages and zero decisions. NomadCrew puts plans, chat, expenses, and your travel wallet in one shared hub. Built for friend groups, families, and any crew that travels together. Join the waitlist."
   isHomepage={true}
 >
   <!-- Navbar: client:load (immediate interactivity for navigation) -->
@@ -35,6 +36,11 @@ import ExpandedFooter from '../components/react/ExpandedFooter.tsx';
     <BentoFeatures client:visible />
   </section>
 
+  <!-- WalletPreview: client:visible (feature preview section) -->
+  <section id="wallet">
+    <WalletPreview client:visible />
+  </section>
+
   <!-- SocialProof: client:visible (positioned above waitlist for conversion) -->
   <SocialProof client:visible />
 
@@ -45,14 +51,14 @@ import ExpandedFooter from '../components/react/ExpandedFooter.tsx';
         class="text-3xl font-bold mb-6"
         style="color: var(--color-text-primary, #2D2520);"
       >
-        Join the Waitlist
+        You Always Plan the Trip. We Built This for You.
       </h2>
       <p
         class="mb-8"
         style="color: var(--color-text-secondary, #635750);"
       >
-        Be among the first to experience a better way to travel together.
-        Get early access and exclusive updates.
+        Be first to give your crew one place for the entire trip — plans,
+        chat, expenses, location. Share a link, they're in. No download needed yet.
       </p>
       <WaitlistForm client:visible />
     </div>

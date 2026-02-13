@@ -65,6 +65,30 @@ export async function onRequest(context) {
 
     console.log(`[Waitlist] Processing signup for email: ${email}`);
 
+    // Store in Supabase if configured
+    const supabaseUrl = context.env.SUPABASE_URL;
+    const supabaseAnonKey = context.env.SUPABASE_ANON_KEY;
+    if (supabaseUrl && supabaseAnonKey) {
+      try {
+        const dbRes = await fetch(`${supabaseUrl}/rest/v1/waitlist_signups`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': supabaseAnonKey,
+            'Authorization': `Bearer ${supabaseAnonKey}`
+          },
+          body: JSON.stringify({ email })
+        });
+        if (!dbRes.ok && dbRes.status !== 409) {
+          // 409 = duplicate email, OK to ignore
+          const errText = await dbRes.text();
+          console.error('[Waitlist] Supabase insert error:', dbRes.status, errText);
+        }
+      } catch (e) {
+        console.error('[Waitlist] Supabase error:', e);
+      }
+    }
+
     // Verify Resend API key is present
     if (!context.env.RESEND_API_KEY) {
       console.error('[Waitlist] Missing RESEND_API_KEY environment variable');

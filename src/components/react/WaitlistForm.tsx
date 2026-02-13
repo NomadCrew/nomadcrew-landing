@@ -86,7 +86,7 @@ export default function WaitlistForm() {
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter your email"
+        placeholder="Your email"
         disabled={status === 'loading' || status === 'success'}
         className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:bg-gray-100"
       />
@@ -109,11 +109,11 @@ export default function WaitlistForm() {
             Joining...
           </>
         ) : status === 'success' ? (
-          'Joined Successfully!'
+          "You're In"
         ) : status === 'error' ? (
           'Try Again'
         ) : (
-          'Join Now'
+          'Get Early Access'
         )}
       </motion.button>
       {errorMessage && (
@@ -131,7 +131,7 @@ export default function WaitlistForm() {
           animate={{ opacity: 1 }}
           className="mt-4 text-green-600 w-full text-center"
         >
-          Thank you for joining! We'll be in touch soon.
+          Welcome to NomadCrew. You're officially crew. We'll let you know the moment it's ready.
         </motion.p>
       )}
     </motion.form>

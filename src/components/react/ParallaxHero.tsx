@@ -61,7 +61,7 @@ export default function ParallaxHero() {
   return (
     <div
       ref={containerRef}
-      className="relative h-[150vh] overflow-hidden"
+      className="relative h-[100vh] overflow-hidden"
       role="banner"
       aria-label="Hero section with parallax imagery"
     >
@@ -123,13 +123,13 @@ export default function ParallaxHero() {
           <div className="container mx-auto max-w-4xl text-center">
             {/* Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight">
-              Travel Together, Effortlessly
+              Travel Together. Not Just at the Same Time.
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              Plan trips, share locations, split expenses, and stay connected with your
-              travel crew - all in one beautifully simple app.
+              One shared hub for plans, chat, expenses, and real-time
+              coordination — not 6 apps and a group chat full of "so what's the plan?"
             </p>
 
             {/* CTA Button */}
@@ -147,7 +147,7 @@ export default function ParallaxHero() {
                 e.currentTarget.style.backgroundColor = 'var(--color-accent-primary, #E87B4E)';
               }}
             >
-              Join the Waitlist
+              Get Early Access
               <ArrowRight className="w-5 h-5" />
             </a>
           </div>

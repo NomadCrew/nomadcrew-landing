@@ -26,28 +26,30 @@ export default function SocialProof() {
               <Users className="w-6 h-6" style={{ color: '#E87B4E' }} />
             </div>
             <span className="text-xl font-semibold" style={{ color: '#2D2520' }}>
-              Join 500+ travelers on the waitlist
+              500+ crews already on the waitlist
             </span>
           </div>
 
           {/* Supporting message */}
           <p className="text-base max-w-lg mx-auto mb-6 leading-relaxed" style={{ color: '#635750' }}>
-            Join the community of adventurers planning their next group trip with NomadCrew
+            Three college friends splitting a hostel in Lisbon. A family of 14 coordinating
+            a reunion across 3 time zones. A remote team planning their first offsite in Bali.
+            They all started right here.
           </p>
 
           {/* Trust badges */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
             <span className="flex items-center gap-2" style={{ color: '#635750' }}>
               <CheckCircle className="w-5 h-5" style={{ color: '#4A9B7C' }} />
-              Early access
-            </span>
-            <span className="flex items-center gap-2" style={{ color: '#635750' }}>
-              <CheckCircle className="w-5 h-5" style={{ color: '#4A9B7C' }} />
-              No credit card required
-            </span>
-            <span className="flex items-center gap-2" style={{ color: '#635750' }}>
-              <CheckCircle className="w-5 h-5" style={{ color: '#4A9B7C' }} />
               Free for founding members
+            </span>
+            <span className="flex items-center gap-2" style={{ color: '#635750' }}>
+              <CheckCircle className="w-5 h-5" style={{ color: '#4A9B7C' }} />
+              Invite your whole crew in one tap
+            </span>
+            <span className="flex items-center gap-2" style={{ color: '#635750' }}>
+              <CheckCircle className="w-5 h-5" style={{ color: '#4A9B7C' }} />
+              No credit card needed
             </span>
           </div>
         </motion.div>

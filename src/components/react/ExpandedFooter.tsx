@@ -60,7 +60,7 @@ export default function ExpandedFooter() {
               NomadCrew
             </h3>
             <p className="text-[var(--color-text-secondary)] text-[var(--font-size-base)] mb-6">
-              Group travel, simplified.
+              One crew. One trip. One app.
             </p>
 
             {/* Social Icons */}

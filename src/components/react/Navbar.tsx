@@ -67,7 +67,7 @@ export default function Navbar() {
             e.currentTarget.style.backgroundColor = 'var(--color-accent-primary, #E87B4E)';
           }}
         >
-          Join Waitlist <ArrowRight size={16} />
+          Get Early Access <ArrowRight size={16} />
         </motion.a>
       </div>
     </motion.nav>
